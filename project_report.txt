@@ -39,23 +39,66 @@ Project Title: DE2Pac Synthesizer
 Provide a one paragraph description of your project:
 
 DE2Pac is a basic Synthesizer that will allow the user to create sounds from two oscillator sources and configure modulations to specific parameters using an ADSR envelope.
-If time permitted, we will also include a fitler module that the oscillators can be routed to. 
+If time permitted, we will also include a filter module that the oscillators can be routed to. 
 A basic UI will be displayed on the VGA out, showing the user the current state of the synthesizer as well as their current selections.
 The user will be able to select the current module (oscillator A, oscillator B, envelope, filter, etc) and the current parameter (oscillator A => wave, oscillator A => volume, etc) using the switches on the DE2 board.
 The user then can configure the value for the selected parameter using switches or the analog input (certain parameters like oscillator volume and panning will allow this while others like octave and semitone will not).
-The user then can apply and store the value using a key.
+The user then applies and stores the currently selected value using a key.
+
+In terms of team structure our group of four will be split into two subgroups of two:
+Group A will be responsible for setting up core synthesizer functionality which includes
+- PS2 keyboard input (acts as our piano keyboard which we use to input the notes to play)
+- Oscillators (x2)
+- ASDR envelope (x1)
+- LFO envelope (x1), if time permitted
+- Filter (x1), if time permitted
+
+Group B is responsible for setting up the VGA view layer of the synthesizer. 
+They will create areas on the screen showing the current state for the following modules:
+- Oscillators (x2)
+- ADSR envelope (x1)
+- LFO envelope (x1), if time permitted
+- Filter (x1), if time permitted
+- A visual representation of the keyboard and the current note being played, if time permitted
+Each module will have selection outlines to indicate if they are currently selected.
+
+
 
 What is your plan for the first week?
+Group A:
+Migrate code over from the demo synthesizer and get some basic notes playing.
+
+Group B: 
+Have the ability to draw basic module shapes (i.e. a hollow rectangle) and some letters/words.
+
 
 
 What is your plan for the second week?
+Group A:
+Have oscillator and ADSR envelopes built. Have them hooked up and working with switches and keys and PS2 keyboard.
+
+Group B: 
+Have oscillator and ASDR envelope modules display on the VGA output and have selections highlights changed based off switch inputs.
+
 
 
 What is your plan for the third week?
 
+Group A:
+Implement and integrate LFO envelope and filter modules.
+
+Group B: 
+Have LFO envelope and filter modules display on the VGA and have state value update changes from the synthesizer core reflected on the screen.
+
+
 
 What is your backup plan if things don’t work out as planned?
 
+The project plan is designed in such a way that we can omit all the items supposed to be done in week three if we encounter any unforeseen complications in either week one or week two.
+
+So for group A, if something takes up too much time in week one or two (e.x. maybe the ASDR envelope was harder to implement than expected) we can simply not add the LFO and/or the filter modules.
+
+For group B, if group A fails to implement the LFO and/or filter envelopes then they can just not implement the display modules for those respective audio modules.
 
 
 Weekly Reports
@@ -76,6 +119,10 @@ References
 <In this space clearly indicate all external sources used in this project. If you used anyone else's code (from previous B58 projects or other sources) clearly indicate what you used and where you found it. Usage of any material not credited in this space will be considered plagiarism. It is absolutely OK and expected to update this section as you progress in the projected.>
 
 <Make sure to document what YOU added on top of the existing work, especially if you work with a previous project. What is it that YOU added?>
+
+DE2 Demo Synthesizer Project: http://download.terasic.com/downloads/cd-rom/de2-115/
+- Verilog files used:
+	- TODO: complete this
 
 
 Repo & Video
