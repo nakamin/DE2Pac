@@ -33,11 +33,17 @@ UofT E-mail Address: chedy.sankar@mail.utoronto.ca
 Project Plan
 --------
 
-Project Title: 
+Project Title: DE2Pac Synthesizer
 
 
 Provide a one paragraph description of your project:
 
+DE2Pac is a basic Synthesizer that will allow the user to create sounds from two oscillator sources and configure modulations to specific parameters using an ADSR envelope.
+If time permitted, we will also include a fitler module that the oscillators can be routed to. 
+A basic UI will be displayed on the VGA out, showing the user the current state of the synthesizer as well as their current selections.
+The user will be able to select the current module (oscillator A, oscillator B, envelope, filter, etc) and the current parameter (oscillator A => wave, oscillator A => volume, etc) using the switches on the DE2 board.
+The user then can configure the value for the selected parameter using switches or the analog input (certain parameters like oscillator volume and panning will allow this while others like octave and semitone will not).
+The user then can apply and store the value using a key.
 
 What is your plan for the first week?
 
