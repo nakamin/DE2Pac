@@ -118,6 +118,9 @@ Audio Controller: http://www.eecg.utoronto.ca/~jayar/ece241_08F/AudioVideoCores/
 Audio and Video-in Configuration Module: http://www.eecg.utoronto.ca/~jayar/ece241_08F/AudioVideoCores/avconf/avconf.html
 - src/avconf/*
 
+From Class:
+- src/hex/HexDecoder.v
+
 Repo & Video
 ------------
 <At the end of the project, provide links to your code repository and presentation video (and passwords if not public>

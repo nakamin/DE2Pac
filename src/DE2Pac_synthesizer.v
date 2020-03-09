@@ -11,6 +11,16 @@ module DE2Pac_synthesizer(
     // -- LED --
     LEDR,
 
+    // -- HEX --
+    HEX0,
+	HEX1,
+	HEX2,
+	HEX3,
+	HEX4,
+	HEX5,
+	HEX6,
+	HEX7,
+
     // -- Audio --
     AUD_ADCDAT,
 
@@ -42,6 +52,16 @@ module DE2Pac_synthesizer(
 
     // -- LED --
     output [17:0] LEDR;
+
+    // -- HEX --
+    output [6:0] HEX0;
+    output [6:0] HEX1;
+    output [6:0] HEX2;
+    output [6:0] HEX3;
+    output [6:0] HEX4;
+    output [6:0] HEX5;
+    output [6:0] HEX6;
+    output [6:0] HEX7;
 
     // -- Audio --
     input AUD_ADCDAT;
@@ -80,6 +100,42 @@ module DE2Pac_synthesizer(
     wire [7:0] key1_code;
     wire [7:0] key2_code;
 
+    // --- Temp Sound Test ---
+    // TODO: remove this stuff
+    reg [18:0] delay_cnt, delay;
+    reg snd;
+
+    always @(posedge CLOCK_50)
+	if(delay_cnt == delay) begin
+		delay_cnt <= 0;
+		snd <= !snd;
+	end else delay_cnt <= delay_cnt + 1;
+
+    assign delay = {SW[3:0], 15'd3000};
+    wire [31:0] sound = (SW == 0) ? 0 : snd ? 32'd10000000 : -32'd10000000;
+    assign left_channel_audio_out = sound;
+    assign right_channel_audio_out = sound;
+    assign write_audio_out = audio_out_allowed;
+
+    // --- Temp Keyboard Test ---
+    // TODO: remove this stuff
+    HexDecoder h0(
+        .in((key1_on) ? key1_code[3:0] : 4'b0),
+        .out(HEX0)
+    );
+    HexDecoder h1(
+        .in((key1_on) ? key1_code[7:4] : 4'b0),
+        .out(HEX1)
+    );
+    HexDecoder h2(
+        .in((key2_on) ? key2_code[3:0] : 4'b0),
+        .out(HEX2)
+    );
+    HexDecoder h3(
+        .in((key2_on) ? key2_code[7:4] : 4'b0),
+        .out(HEX3)
+    );
+
     // -------------------
     // --- Synthesizer ---
     // -------------------
@@ -94,7 +150,6 @@ module DE2Pac_synthesizer(
     // --- PS2 Keyboard Scan ---
     // -------------------------
     // (adapted from DE2_115_Synthesizer demo project)
-
     reg [31:0] VGA_CLKo;
     wire keyboard_sysclk;
     assign keyboard_sysclk = VGA_CLKo[12];
@@ -122,6 +177,7 @@ module DE2Pac_synthesizer(
     // ------------------------
     // --- Audio Controller ---
     // ------------------------
+    // (adapted from Audio Controller demo project)
     Audio_Controller audio_controller (
         // Inputs
         .CLOCK_50(CLOCK_50),
@@ -158,6 +214,7 @@ module DE2Pac_synthesizer(
     // -----------------------------------------------
     // --- Audio and Video-in Configuration Module ---
     // -----------------------------------------------
+    // (adapted from Audio Controller demo project)
     avconf #(.USE_MIC_INPUT(1)) avc (
         .I2C_SCLK (I2C_SCLK),
         .I2C_SDAT (I2C_SDAT),
