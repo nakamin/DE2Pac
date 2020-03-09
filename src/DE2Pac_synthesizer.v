@@ -5,8 +5,12 @@ module DE2Pac_synthesizer (
     // -- Key --
 	KEY,
 
-    // -- SW --
+    // -- Switch --
     SW,
+
+    // -- LED --
+	LEDG,
+	LEDR,
 
     // -- HEX --
     HEX0,
@@ -17,10 +21,6 @@ module DE2Pac_synthesizer (
 	HEX5,
 	HEX6,
 	HEX7,
-
-    // -- LED --
-	LEDG,
-	LEDR
 
     // -- Audio --
 	AUD_ADCDAT,
@@ -38,19 +38,28 @@ module DE2Pac_synthesizer (
 
 	// -- PS2 --
     PS2_KBCLK,
-	PS2_KBDAT,
+	PS2_KBDAT
 );
+    // -----------------------
+    // --- IO Declarations ---
+    // -----------------------
+
     // -- Clock --
     input CLOCK_50;
+
+    // -- Key --
+    input [3:0] KEY;
+
+    // -- Switch --
+    input [17:0] SW;
 
     // -- PS2 --
     inout PS2_KBCLK;
     inout PS2_KBDAT;
 
-    wire key1_on;
-    wire key2_on;
-    wire [7:0] key1_code;
-    wire [7:0] key2_code;
+    // -- LED --
+	output [8:0] LEDG;
+	output [17:0] LEDR;
 
 	// -- HEX --
     output [6:0] HEX0;
@@ -62,147 +71,130 @@ module DE2Pac_synthesizer (
     output [6:0] HEX6;
     output [6:0] HEX7;
 
-	output [8:0] LEDG;
-	output [17:0] LEDR;
+    // -- Audio --
+    input AUD_ADCDAT;
 
-// Inputs
-input		[3:0]	KEY;
-input		[17:0]	SW;
+    inout AUD_BCLK;
+    inout AUD_ADCLRCK;
+    inout AUD_DACLRCK; // Output clock of audio stream, runs at 48kHz in our project
 
-input				AUD_ADCDAT;
+    inout I2C_SDAT;
 
-// Bidirectionals
-inout				AUD_BCLK;
-inout				AUD_ADCLRCK;
-inout				AUD_DACLRCK;
+    output AUD_XCK;
+    output AUD_DACDAT;
 
-inout				I2C_SDAT;
+    output I2C_SCLK;
 
-// Outputs
-output				AUD_XCK;
-output				AUD_DACDAT;
+    // -------------------------
+    // --- Wire Declarations ---
+    // -------------------------
 
-output				I2C_SCLK;
+    wire audio_in_available;
+    wire [31:0]	left_channel_audio_in;
+    wire [31:0]	right_channel_audio_in;
+    wire read_audio_in;
 
-/*****************************************************************************
- *                 Internal Wires and Registers Declarations                 *
- *****************************************************************************/
-// Internal Wires
-wire				audio_in_available;
-wire		[31:0]	left_channel_audio_in;
-wire		[31:0]	right_channel_audio_in;
-wire				read_audio_in;
+    wire audio_out_allowed;
+    wire [31:0]	left_channel_audio_out;
+    wire [31:0]	right_channel_audio_out;
+    wire write_audio_out;
 
-wire				audio_out_allowed;
-wire		[31:0]	left_channel_audio_out;
-wire		[31:0]	right_channel_audio_out;
-wire				write_audio_out;
+    wire key1_on;
+    wire key2_on;
+    wire [7:0] key1_code;
+    wire [7:0] key2_code;
 
-// Internal Registers
-
-reg [18:0] delay_cnt;
-wire [18:0] delay;
-reg snd;
-
-// State Machine Registers
-
-/*****************************************************************************
- *                         Finite State Machine(s)                           *
- *****************************************************************************/
-
-
-/*****************************************************************************
- *                             Sequential Logic                              *
- *****************************************************************************/
-
-always @(posedge CLOCK_50)
-	if(delay_cnt == delay) begin
-		delay_cnt <= 0;
-		snd <= !snd;
-	end else delay_cnt <= delay_cnt + 1;
-
-/*****************************************************************************
- *                            Combinational Logic                            *
- *****************************************************************************/
-
-assign delay = {SW[3:0], 15'd3000};
-
-wire [31:0] sound = (SW == 0) ? 0 : snd ? 32'd5000000 << SW[17:16] : -32'd5000000 << SW[17:16];
-
-
-assign read_audio_in			= audio_in_available & audio_out_allowed;
-
-assign left_channel_audio_out	= sound;
-assign right_channel_audio_out	= sound;
-assign write_audio_out			= audio_in_available & audio_out_allowed;
-
-/*****************************************************************************
- *                              Internal Modules                             *
- *****************************************************************************/
-
-Audio_Controller Audio_Controller (
-	// Inputs
-	.CLOCK_50						(CLOCK_50),
-	.reset						(~KEY[0]),
-
-	.clear_audio_in_memory		(),
-	.read_audio_in				(read_audio_in),
-	
-	.clear_audio_out_memory		(),
-	.left_channel_audio_out		(left_channel_audio_out),
-	.right_channel_audio_out	(right_channel_audio_out),
-	.write_audio_out			(write_audio_out),
-
-	.AUD_ADCDAT					(AUD_ADCDAT),
-
-	// Bidirectionals
-	.AUD_BCLK					(AUD_BCLK),
-	.AUD_ADCLRCK				(AUD_ADCLRCK),
-	.AUD_DACLRCK				(AUD_DACLRCK),
-
-
-	// Outputs
-	.audio_in_available			(audio_in_available),
-	.left_channel_audio_in		(left_channel_audio_in),
-	.right_channel_audio_in		(right_channel_audio_in),
-
-	.audio_out_allowed			(audio_out_allowed),
-
-	.AUD_XCK					(AUD_XCK),
-	.AUD_DACDAT					(AUD_DACDAT),
-
-);
-
-avconf avc (
-	.I2C_SCLK					(I2C_SCLK),
-	.I2C_SDAT					(I2C_SDAT),
-	.CLOCK_50					(CLOCK_50),
-	.reset						(~KEY[0])
-);
-
-// --- Temp Keyboard Test ---
+    // -----------------------
+    // --- Temp Sound Test ---
+    // -----------------------
     // TODO: remove this stuff
-    // HexDecoder h0(
-    //     .in((key1_on) ? key1_code[3:0] : 4'b0),
-    //     .out(HEX0)
-    // );
-    // HexDecoder h1(
-    //     .in((key1_on) ? key1_code[7:4] : 4'b0),
-    //     .out(HEX1)
-    // );
-    // HexDecoder h2(
-    //     .in((key2_on) ? key2_code[3:0] : 4'b0),
-    //     .out(HEX2)
-    // );
-    // HexDecoder h3(
-    //     .in((key2_on) ? key2_code[7:4] : 4'b0),
-    //     .out(HEX3)
-    // );
+    reg [18:0] delay_cnt;
+    wire [18:0] delay;
+    reg snd;
+
+    always @(posedge CLOCK_50)
+        if(delay_cnt == delay) begin
+            delay_cnt <= 0;
+            snd <= !snd;
+    	end else delay_cnt <= delay_cnt + 1;
+
+    assign delay = {SW[3:0], 15'd3000};
+
+    wire [31:0] sound = (SW == 0) ? 0 : snd ? 32'd5000000 << SW[17:16] : -32'd5000000 << SW[17:16];
+    assign read_audio_in = audio_in_available & audio_out_allowed;
+
+    assign left_channel_audio_out = sound;
+    assign right_channel_audio_out = sound;
+    assign write_audio_out = audio_in_available & audio_out_allowed;
+
+    // --------------------------
+    // --- Temp Keyboard Test ---
+    // --------------------------
+    // TODO: remove this stuff
 	assign LEDG[7:0] = scan_code;
 	assign LEDR[1] = key1_on;
 	assign LEDR[0] = key2_on;
 	assign LEDR[17:10] = key1_code;
 	assign LEDR[9:2] = key2_code;
+
+    // -------------------
+    // --- Synthesizer ---
+    // -------------------
+    // TODO: implement
+
+
+    // ----------------
+    // --- VGA View ---
+    // ----------------
+    // TODO: implement
+
+
+    // ------------------------
+    // --- Audio Controller ---
+    // ------------------------
+    // (adapted from Audio Controller demo project)
+    Audio_Controller Audio_Controller (
+        // Inputs
+        .CLOCK_50 (CLOCK_50),
+        .reset (~KEY[0]), // TODO: convert to use resetn
+
+        .clear_audio_in_memory (),
+        .read_audio_in (read_audio_in),
+        
+        .clear_audio_out_memory (),
+        .left_channel_audio_out	(left_channel_audio_out),
+        .right_channel_audio_out (right_channel_audio_out),
+        .write_audio_out (write_audio_out),
+
+        .AUD_ADCDAT (AUD_ADCDAT),
+
+        // Bidirectionals
+        .AUD_BCLK (AUD_BCLK),
+        .AUD_ADCLRCK (AUD_ADCLRCK),
+        .AUD_DACLRCK (AUD_DACLRCK),
+
+
+        // Outputs
+        .audio_in_available (audio_in_available),
+        .left_channel_audio_in (left_channel_audio_in),
+        .right_channel_audio_in (right_channel_audio_in),
+
+        .audio_out_allowed (audio_out_allowed),
+
+        .AUD_XCK (AUD_XCK),
+        .AUD_DACDAT (AUD_DACDAT)
+    );
+
+    // -----------------------------------------------
+    // --- Audio and Video-in Configuration Module ---
+    // -----------------------------------------------
+    // (adapted from Audio Controller demo project)
+    avconf avc (
+        .I2C_SCLK (I2C_SCLK),
+        .I2C_SDAT (I2C_SDAT),
+        .CLOCK_50 (CLOCK_50),
+        .reset (~KEY[0]) // TODO: convert to use resetn
+    );
 
 	// -------------------------
     // --- PS2 Keyboard Scan ---
@@ -223,8 +215,8 @@ avconf avc (
         .ps2_dat(PS2_KBDAT), // PS2 bus data
         .ps2_clk(PS2_KBCLK), // PS2 bus clock
         .sys_clk(keyboard_sysclk), // System clock
-        .reset(KEY[3]), // System reset, active low
-        .reset1(KEY[2]), // Keyboard reset, active low
+        .reset(KEY[3]), // System reset, active low TODO: convert to use resetn
+        .reset1(KEY[2]), // Keyboard reset, active low TODO: convert to use resetn
         .scandata(scan_code), // Scan code
         .key1_on(key1_on), // Key1 trigger
         .key2_on(key2_on), // Key2 trigger
