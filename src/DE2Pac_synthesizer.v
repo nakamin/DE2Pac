@@ -1,30 +1,14 @@
 module DE2Pac_synthesizer (
-	// Inputs
-	CLOCK_50,
-	CLOCK_27,
+    // -- Clock --
+    CLOCK_50,
+
+    // -- Key --
 	KEY,
 
-	AUD_ADCDAT,
+    // -- SW --
+    SW,
 
-	// Bidirectionals
-	AUD_BCLK,
-	AUD_ADCLRCK,
-	AUD_DACLRCK,
-
-	I2C_SDAT,
-
-	// Outputs
-	AUD_XCK,
-	AUD_DACDAT,
-
-	I2C_SCLK,
-	SW,
-
-	// -- PS2 --
-    PS2_KBCLK,
-	PS2_KBDAT,
-
-	// -- HEX --
+    // -- HEX --
     HEX0,
 	HEX1,
 	HEX2,
@@ -33,10 +17,31 @@ module DE2Pac_synthesizer (
 	HEX5,
 	HEX6,
 	HEX7,
-	
+
+    // -- LED --
 	LEDG,
 	LEDR
+
+    // -- Audio --
+	AUD_ADCDAT,
+
+	AUD_BCLK,
+	AUD_ADCLRCK,
+	AUD_DACLRCK,
+
+	I2C_SDAT,
+
+	AUD_XCK,
+	AUD_DACDAT,
+
+	I2C_SCLK,
+
+	// -- PS2 --
+    PS2_KBCLK,
+	PS2_KBDAT,
 );
+    // -- Clock --
+    input CLOCK_50;
 
     // -- PS2 --
     inout PS2_KBCLK;
@@ -59,17 +64,8 @@ module DE2Pac_synthesizer (
 
 	output [8:0] LEDG;
 	output [17:0] LEDR;
-/*****************************************************************************
- *                           Parameter Declarations                          *
- *****************************************************************************/
 
-
-/*****************************************************************************
- *                             Port Declarations                             *
- *****************************************************************************/
 // Inputs
-input				CLOCK_50;
-input				CLOCK_27;
 input		[3:0]	KEY;
 input		[17:0]	SW;
 
