@@ -36,7 +36,7 @@ Below is an outline of all the parameters for the modules
 * **decay:** 12 bit, (0ms-4095ms) default 000001100100 (100ms)
     * the decimal value of the number corresponds to the number of milliseconds
     * 000000000000 (0ms), 111111111111 (4095ms = 4.095s)
-* **sustain:**: 7 bit (0%-100%), default 100%
+* **sustain:** 7 bit (0%-100%), default 100%
     * only use first 101 numbers, where 0%=0000000
 * **release:** 12 bit, (0ms-4095ms) default 000001100100 (100ms)
     * the decimal value of the number corresponds to the number of milliseconds
