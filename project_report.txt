@@ -110,12 +110,13 @@ References
 <Make sure to document what YOU added on top of the existing work, especially if you work with a previous project. What is it that YOU added?>
 
 DE2 Demo Synthesizer Project: http://download.terasic.com/downloads/cd-rom/de2-115/
-- Verilog used:
-	- TODO: complete this
+- src/PS2_Keyboard/ps2_keyboard.v (taken mostly line-for-line but modified a bit to suit our needs)
 
-Audio Controller Module: http://www.eecg.utoronto.ca/~jayar/ece241_08F/AudioVideoCores/audio/audio.html
-- Verilog used:
-	- TODO: complete this
+Audio Controller: http://www.eecg.utoronto.ca/~jayar/ece241_08F/AudioVideoCores/audio/audio.html
+- src/Audio_Controller/*
+
+Audio and Video-in Configuration Module: http://www.eecg.utoronto.ca/~jayar/ece241_08F/AudioVideoCores/avconf/avconf.html
+- src/avconf/*
 
 Repo & Video
 ------------

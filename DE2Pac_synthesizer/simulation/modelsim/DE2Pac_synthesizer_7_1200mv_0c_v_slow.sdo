@@ -1,0 +1,3502 @@
+// Copyright (C) 2016  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel MegaCore Function License Agreement, or other 
+// applicable license agreement, including, without limitation, 
+// that your use is for the sole purpose of programming logic 
+// devices manufactured by Intel and sold by Intel or its 
+// authorized distributors.  Please refer to the applicable 
+// agreement for further details.
+
+
+// 
+// Device: Altera EP4CE115F29C7 Package FBGA780
+// 
+
+//
+// This file contains Slow Corner delays for the design using part EP4CE115F29C7,
+// with speed grade 7, core voltage 1.2VmV, and temperature 0 Celsius
+//
+
+// 
+// This SDF file should be used for ModelSim-Altera (Verilog) only
+// 
+
+(DELAYFILE
+  (SDFVERSION "2.1")
+  (DESIGN "DE2Pac_synthesizer")
+  (DATE "03/08/2020 21:03:03")
+  (VENDOR "Altera")
+  (PROGRAM "Quartus Prime")
+  (VERSION "Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition")
+  (DIVIDER .)
+  (TIMESCALE 1 ps)
+
+  (CELL
+    (CELLTYPE "cycloneive_io_obuf")
+    (INSTANCE AUD_XCK\~output)
+    (DELAY
+      (ABSOLUTE
+        (PORT i (1625:1625:1625) (1625:1625:1625))
+        (IOPATH i o (2565:2565:2565) (2449:2449:2449))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_io_obuf")
+    (INSTANCE AUD_DACDAT\~output)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH i o (2091:2091:2091) (1975:1975:1975))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_io_ibuf")
+    (INSTANCE CLOCK_50\~input)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH i o (676:676:676) (848:848:848))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_pll")
+    (INSTANCE audio_controller\|Audio_Clock\|altpll_component\|pll)
+    (DELAY
+      (ABSOLUTE
+        (PORT inclk[0] (1964:1964:1964) (1964:1964:1964))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_clkctrl")
+    (INSTANCE audio_controller\|Audio_Clock\|altpll_component\|_clk0\~clkctrl)
+    (DELAY
+      (ABSOLUTE
+        (PORT inclk[0] (1977:1977:1977) (1950:1950:1950))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_clkctrl")
+    (INSTANCE CLOCK_50\~inputclkctrl)
+    (DELAY
+      (ABSOLUTE
+        (PORT inclk[0] (162:162:162) (156:156:156))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_io_ibuf")
+    (INSTANCE AUD_DACLRCK\~input)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH i o (646:646:646) (818:818:818))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|DAC_Left_Right_Clock_Edges\|cur_test_clk)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1755:1755:1755) (1825:1825:1825))
+        (PORT d (216:216:216) (215:215:215))
+        (IOPATH (posedge clk) q (605:605:605) (550:550:550))
+      )
+    )
+    (TIMINGCHECK
+      (SETUP d (posedge clk) (100:100:100))
+      (HOLD d (posedge clk) (52:52:52))
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|DAC_Left_Right_Clock_Edges\|last_test_clk)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1848:1848:1848) (1861:1861:1861))
+        (PORT asdata (1929:1929:1929) (1868:1868:1868))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD asdata (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_comb_bita0)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (271:271:271) (343:343:343))
+        (IOPATH datab combout (391:391:391) (399:399:399))
+        (IOPATH datab cout (445:445:445) (334:334:334))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_reg_bit\[0\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1856:1856:1856) (1869:1869:1869))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1060:1060:1060) (1034:1034:1034))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_comb_bita1)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (271:271:271) (344:344:344))
+        (IOPATH datab combout (369:369:369) (349:349:349))
+        (IOPATH datab cout (445:445:445) (334:334:334))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_reg_bit\[1\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1856:1856:1856) (1869:1869:1869))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1060:1060:1060) (1034:1034:1034))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_comb_bita2)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (272:272:272) (349:349:349))
+        (IOPATH dataa combout (382:382:382) (394:394:394))
+        (IOPATH dataa cout (435:435:435) (328:328:328))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_reg_bit\[2\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1856:1856:1856) (1869:1869:1869))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1060:1060:1060) (1034:1034:1034))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_comb_bita3)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (270:270:270) (342:342:342))
+        (IOPATH datab combout (369:369:369) (349:349:349))
+        (IOPATH datab cout (445:445:445) (334:334:334))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_reg_bit\[3\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1856:1856:1856) (1869:1869:1869))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1060:1060:1060) (1034:1034:1034))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_comb_bita4)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (272:272:272) (350:350:350))
+        (IOPATH dataa combout (382:382:382) (394:394:394))
+        (IOPATH dataa cout (435:435:435) (328:328:328))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_reg_bit\[4\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1856:1856:1856) (1869:1869:1869))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1060:1060:1060) (1034:1034:1034))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_comb_bita5)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (269:269:269) (342:342:342))
+        (IOPATH datab combout (369:369:369) (349:349:349))
+        (IOPATH datab cout (445:445:445) (334:334:334))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_reg_bit\[5\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1856:1856:1856) (1869:1869:1869))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1060:1060:1060) (1034:1034:1034))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_comb_bita6)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (272:272:272) (349:349:349))
+        (IOPATH dataa combout (382:382:382) (394:394:394))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_reg_bit\[6\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1856:1856:1856) (1869:1869:1869))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1060:1060:1060) (1034:1034:1034))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|three_comparison\|aneb_result_wire\[0\]\~0)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (276:276:276) (355:355:355))
+        (PORT datab (274:274:274) (347:347:347))
+        (PORT datac (242:242:242) (319:319:319))
+        (PORT datad (243:243:243) (309:309:309))
+        (IOPATH dataa combout (380:380:380) (360:360:360))
+        (IOPATH datab combout (381:381:381) (361:361:361))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|three_comparison\|aneb_result_wire\[0\])
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (433:433:433) (409:409:409))
+        (PORT datab (273:273:273) (347:347:347))
+        (PORT datac (240:240:240) (316:316:316))
+        (PORT datad (242:242:242) (308:308:308))
+        (IOPATH dataa combout (334:334:334) (333:333:333))
+        (IOPATH datab combout (328:328:328) (331:331:331))
+        (IOPATH datac combout (263:263:263) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_is_2_dff)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1856:1856:1856) (1869:1869:1869))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1060:1060:1060) (1034:1034:1034))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_is_1_dff\~feeder)
+    (DELAY
+      (ABSOLUTE
+        (PORT datad (235:235:235) (298:298:298))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_is_1_dff)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1856:1856:1856) (1869:1869:1869))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1060:1060:1060) (1034:1034:1034))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|empty_dff\~0)
+    (DELAY
+      (ABSOLUTE
+        (PORT datad (234:234:234) (296:296:296))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|empty_dff)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1856:1856:1856) (1869:1869:1869))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1060:1060:1060) (1034:1034:1034))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_comb_bita0)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (273:273:273) (349:349:349))
+        (IOPATH dataa combout (382:382:382) (394:394:394))
+        (IOPATH dataa cout (435:435:435) (328:328:328))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|left_channel_was_read\~2)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1593:1593:1593) (1536:1536:1536))
+        (PORT datab (731:731:731) (703:703:703))
+        (PORT datad (281:281:281) (355:355:355))
+        (IOPATH dataa combout (328:328:328) (323:323:323))
+        (IOPATH datab combout (381:381:381) (378:378:378))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|left_channel_was_read)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1848:1848:1848) (1861:1861:1861))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|read_right_channel\~0)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (281:281:281) (364:364:364))
+        (PORT datac (1556:1556:1556) (1498:1498:1498))
+        (PORT datad (280:280:280) (353:353:353))
+        (IOPATH dataa combout (327:327:327) (323:323:323))
+        (IOPATH datac combout (263:263:263) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_reg_bit\[0\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1854:1854:1854) (1867:1867:1867))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1354:1354:1354) (1302:1302:1302))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_comb_bita1)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (274:274:274) (352:352:352))
+        (IOPATH dataa combout (367:367:367) (357:357:357))
+        (IOPATH dataa cout (435:435:435) (328:328:328))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_reg_bit\[1\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1854:1854:1854) (1867:1867:1867))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1354:1354:1354) (1302:1302:1302))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_comb_bita2)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (271:271:271) (344:344:344))
+        (IOPATH datab combout (391:391:391) (399:399:399))
+        (IOPATH datab cout (445:445:445) (334:334:334))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_reg_bit\[2\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1854:1854:1854) (1867:1867:1867))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1354:1354:1354) (1302:1302:1302))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_comb_bita3)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (271:271:271) (344:344:344))
+        (IOPATH datab combout (369:369:369) (349:349:349))
+        (IOPATH datab cout (445:445:445) (334:334:334))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_reg_bit\[3\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1854:1854:1854) (1867:1867:1867))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1354:1354:1354) (1302:1302:1302))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_comb_bita4)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (271:271:271) (345:345:345))
+        (IOPATH datab combout (391:391:391) (399:399:399))
+        (IOPATH datab cout (445:445:445) (334:334:334))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_reg_bit\[4\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1854:1854:1854) (1867:1867:1867))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1354:1354:1354) (1302:1302:1302))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_comb_bita5)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (285:285:285) (355:355:355))
+        (IOPATH datab combout (369:369:369) (349:349:349))
+        (IOPATH datab cout (445:445:445) (334:334:334))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_reg_bit\[5\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1854:1854:1854) (1867:1867:1867))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1354:1354:1354) (1302:1302:1302))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_comb_bita6)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (273:273:273) (351:351:351))
+        (IOPATH dataa combout (382:382:382) (394:394:394))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_counter\|counter_reg_bit\[6\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1854:1854:1854) (1867:1867:1867))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1354:1354:1354) (1302:1302:1302))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|three_comparison\|aneb_result_wire\[0\]\~0)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (458:458:458) (485:485:485))
+        (PORT datab (273:273:273) (346:346:346))
+        (PORT datac (241:241:241) (317:317:317))
+        (PORT datad (242:242:242) (308:308:308))
+        (IOPATH dataa combout (380:380:380) (360:360:360))
+        (IOPATH datab combout (381:381:381) (361:361:361))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|three_comparison\|aneb_result_wire\[0\])
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (275:275:275) (354:354:354))
+        (PORT datab (219:219:219) (245:245:245))
+        (PORT datac (239:239:239) (315:315:315))
+        (PORT datad (243:243:243) (310:310:310))
+        (IOPATH dataa combout (327:327:327) (323:323:323))
+        (IOPATH datab combout (343:343:343) (339:339:339))
+        (IOPATH datac combout (263:263:263) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_is_2_dff)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1854:1854:1854) (1867:1867:1867))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1354:1354:1354) (1302:1302:1302))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|usedw_is_1_dff)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1854:1854:1854) (1867:1867:1867))
+        (PORT asdata (605:605:605) (673:673:673))
+        (PORT ena (1354:1354:1354) (1302:1302:1302))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD asdata (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|empty_dff\~0)
+    (DELAY
+      (ABSOLUTE
+        (PORT datad (234:234:234) (296:296:296))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|empty_dff)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1854:1854:1854) (1867:1867:1867))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1354:1354:1354) (1302:1302:1302))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|read_left_channel)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1597:1597:1597) (1520:1520:1520))
+        (PORT datab (454:454:454) (485:485:485))
+        (PORT datac (443:443:443) (466:466:466))
+        (PORT datad (238:238:238) (302:302:302))
+        (IOPATH dataa combout (328:328:328) (323:323:323))
+        (IOPATH datab combout (343:343:343) (349:349:349))
+        (IOPATH datac combout (263:263:263) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|low_addressa\[0\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1856:1856:1856) (1869:1869:1869))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_lsb\~0)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH datac combout (366:366:366) (380:380:380))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_lsb)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1856:1856:1856) (1869:1869:1869))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1060:1060:1060) (1034:1034:1034))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|ram_read_address\[0\]\~0)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (455:455:455) (445:445:445))
+        (PORT datad (254:254:254) (317:317:317))
+        (IOPATH dataa combout (380:380:380) (377:377:377))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|low_addressa\[1\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1871:1871:1871) (1887:1887:1887))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_comb_bita0)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (272:272:272) (348:348:348))
+        (IOPATH dataa combout (380:380:380) (377:377:377))
+        (IOPATH dataa cout (435:435:435) (328:328:328))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|_\~0)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (460:460:460) (491:491:491))
+        (PORT datad (242:242:242) (306:306:306))
+        (IOPATH datab combout (343:343:343) (349:349:349))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|_\~1)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1599:1599:1599) (1522:1522:1522))
+        (PORT datab (498:498:498) (509:509:509))
+        (PORT datac (443:443:443) (465:465:465))
+        (PORT datad (189:189:189) (207:207:207))
+        (IOPATH dataa combout (328:328:328) (323:323:323))
+        (IOPATH datab combout (343:343:343) (349:349:349))
+        (IOPATH datac combout (263:263:263) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_reg_bit\[0\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1871:1871:1871) (1887:1887:1887))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1007:1007:1007) (961:961:961))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|ram_read_address\[1\]\~1)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (761:761:761) (744:744:744))
+        (PORT datad (243:243:243) (310:310:310))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|low_addressa\[2\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1871:1871:1871) (1887:1887:1887))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_comb_bita1)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (273:273:273) (349:349:349))
+        (IOPATH dataa combout (369:369:369) (389:389:389))
+        (IOPATH dataa cout (435:435:435) (328:328:328))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_reg_bit\[1\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1871:1871:1871) (1887:1887:1887))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1007:1007:1007) (961:961:961))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|ram_read_address\[2\]\~2)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (759:759:759) (742:742:742))
+        (PORT datad (242:242:242) (309:309:309))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_comb_bita2)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (271:271:271) (345:345:345))
+        (IOPATH datab combout (381:381:381) (378:378:378))
+        (IOPATH datab cout (445:445:445) (334:334:334))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_reg_bit\[2\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1871:1871:1871) (1887:1887:1887))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1007:1007:1007) (961:961:961))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|low_addressa\[3\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1871:1871:1871) (1887:1887:1887))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|ram_read_address\[3\]\~3)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (684:684:684) (677:677:677))
+        (PORT datab (272:272:272) (346:346:346))
+        (IOPATH dataa combout (358:358:358) (377:377:377))
+        (IOPATH datab combout (364:364:364) (378:378:378))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|low_addressa\[4\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1871:1871:1871) (1887:1887:1887))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_comb_bita3)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (271:271:271) (344:344:344))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datab cout (445:445:445) (334:334:334))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_reg_bit\[3\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1871:1871:1871) (1887:1887:1887))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1007:1007:1007) (961:961:961))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|ram_read_address\[4\]\~4)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (761:761:761) (744:744:744))
+        (PORT datad (241:241:241) (307:307:307))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|low_addressa\[5\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1871:1871:1871) (1887:1887:1887))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_comb_bita4)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (271:271:271) (343:343:343))
+        (IOPATH datab combout (381:381:381) (378:378:378))
+        (IOPATH datab cout (445:445:445) (334:334:334))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_reg_bit\[4\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1871:1871:1871) (1887:1887:1887))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1007:1007:1007) (961:961:961))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|ram_read_address\[5\]\~5)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (759:759:759) (742:742:742))
+        (PORT datad (242:242:242) (309:309:309))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|low_addressa\[6\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1873:1873:1873) (1889:1889:1889))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_comb_bita5)
+    (DELAY
+      (ABSOLUTE
+        (PORT datad (255:255:255) (318:318:318))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_reg_bit\[5\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1871:1871:1871) (1887:1887:1887))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1007:1007:1007) (961:961:961))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|ram_read_address\[6\]\~6)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (812:812:812) (809:809:809))
+        (PORT datad (439:439:439) (457:457:457))
+        (IOPATH dataa combout (369:369:369) (389:389:389))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_register")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.datain_a_register)
+    (DELAY
+      (ABSOLUTE
+        (PORT d[0] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[1] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[2] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[3] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[4] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[5] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[6] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[7] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[8] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[9] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[10] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[11] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[12] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[13] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[14] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[15] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[16] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[17] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[18] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[19] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[20] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[21] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[22] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[23] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[24] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[25] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[26] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[27] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[28] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[29] (1562:1562:1562) (1515:1515:1515))
+        (PORT d[30] (1248:1248:1248) (1212:1212:1212))
+        (PORT d[31] (1248:1248:1248) (1212:1212:1212))
+        (PORT clk (2218:2218:2218) (2251:2251:2251))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (201:201:201))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_register")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.addr_a_register)
+    (DELAY
+      (ABSOLUTE
+        (PORT d[0] (795:795:795) (786:786:786))
+        (PORT d[1] (795:795:795) (786:786:786))
+        (PORT d[2] (795:795:795) (786:786:786))
+        (PORT d[3] (795:795:795) (786:786:786))
+        (PORT d[4] (795:795:795) (786:786:786))
+        (PORT d[5] (795:795:795) (786:786:786))
+        (PORT d[6] (795:795:795) (786:786:786))
+        (PORT clk (2215:2215:2215) (2247:2247:2247))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (201:201:201))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_register")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.active_core_port_a)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2218:2218:2218) (2251:2251:2251))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_pulse_generator")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.wpgen_a)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2219:2219:2219) (2252:2252:2252))
+        (IOPATH (posedge clk) pulse (0:0:0) (2194:2194:2194))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_pulse_generator")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.rpgen_a)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2219:2219:2219) (2252:2252:2252))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_pulse_generator")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.ftpgen_a)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2219:2219:2219) (2252:2252:2252))
+        (IOPATH (posedge clk) pulse (0:0:0) (2772:2772:2772))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_pulse_generator")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.rwpgen_a)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2219:2219:2219) (2252:2252:2252))
+        (IOPATH (posedge clk) pulse (0:0:0) (2772:2772:2772))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_register")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.addr_b_register)
+    (DELAY
+      (ABSOLUTE
+        (PORT d[0] (1005:1005:1005) (964:964:964))
+        (PORT d[1] (734:734:734) (707:707:707))
+        (PORT d[2] (755:755:755) (719:719:719))
+        (PORT d[3] (732:732:732) (700:700:700))
+        (PORT d[4] (709:709:709) (677:677:677))
+        (PORT d[5] (738:738:738) (701:701:701))
+        (PORT d[6] (702:702:702) (678:678:678))
+        (PORT clk (2176:2176:2176) (2170:2170:2170))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (201:201:201))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_register")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.active_core_port_b)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2176:2176:2176) (2170:2170:2170))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_pulse_generator")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.rpgen_b)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2177:2177:2177) (2171:2171:2171))
+        (IOPATH (posedge clk) pulse (0:0:0) (2618:2618:2618))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_pulse_generator")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.ftpgen_b)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2177:2177:2177) (2171:2171:2171))
+        (IOPATH (posedge clk) pulse (0:0:0) (2802:2802:2802))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_pulse_generator")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Left_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.rwpgen_b)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2177:2177:2177) (2171:2171:2171))
+        (IOPATH (posedge clk) pulse (0:0:0) (2802:2802:2802))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_lsb\~0)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH datac combout (366:366:366) (380:380:380))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_lsb)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1848:1848:1848) (1861:1861:1861))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (939:939:939) (946:946:946))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|low_addressa\[0\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1848:1848:1848) (1861:1861:1861))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|ram_read_address\[0\]\~0)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (273:273:273) (346:346:346))
+        (PORT datad (247:247:247) (276:276:276))
+        (IOPATH datab combout (343:343:343) (349:349:349))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_comb_bita0)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (274:274:274) (353:353:353))
+        (IOPATH dataa combout (380:380:380) (377:377:377))
+        (IOPATH dataa cout (435:435:435) (328:328:328))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|_\~0)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (284:284:284) (368:368:368))
+        (PORT datab (271:271:271) (345:345:345))
+        (PORT datac (1556:1556:1556) (1498:1498:1498))
+        (PORT datad (286:286:286) (359:359:359))
+        (IOPATH dataa combout (327:327:327) (323:323:323))
+        (IOPATH datab combout (343:343:343) (339:339:339))
+        (IOPATH datac combout (263:263:263) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_reg_bit\[0\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1846:1846:1846) (1859:1859:1859))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1036:1036:1036) (984:984:984))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|low_addressa\[1\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1846:1846:1846) (1859:1859:1859))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|ram_read_address\[1\]\~1)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (274:274:274) (353:353:353))
+        (PORT datab (512:512:512) (506:506:506))
+        (IOPATH dataa combout (358:358:358) (377:377:377))
+        (IOPATH datab combout (364:364:364) (378:378:378))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_comb_bita1)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (274:274:274) (353:353:353))
+        (IOPATH dataa combout (369:369:369) (389:389:389))
+        (IOPATH dataa cout (435:435:435) (328:328:328))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_reg_bit\[1\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1846:1846:1846) (1859:1859:1859))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1036:1036:1036) (984:984:984))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|low_addressa\[2\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1846:1846:1846) (1859:1859:1859))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|ram_read_address\[2\]\~2)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (275:275:275) (354:354:354))
+        (PORT datab (514:514:514) (508:508:508))
+        (IOPATH dataa combout (358:358:358) (377:377:377))
+        (IOPATH datab combout (364:364:364) (378:378:378))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|low_addressa\[3\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1846:1846:1846) (1859:1859:1859))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_comb_bita2)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (285:285:285) (355:355:355))
+        (IOPATH datab combout (381:381:381) (378:378:378))
+        (IOPATH datab cout (445:445:445) (334:334:334))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_reg_bit\[2\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1846:1846:1846) (1859:1859:1859))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1036:1036:1036) (984:984:984))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|ram_read_address\[3\]\~3)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (512:512:512) (506:506:506))
+        (PORT datad (426:426:426) (438:438:438))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|low_addressa\[4\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1846:1846:1846) (1859:1859:1859))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_comb_bita3)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (271:271:271) (344:344:344))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datab cout (445:445:445) (334:334:334))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_reg_bit\[3\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1846:1846:1846) (1859:1859:1859))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1036:1036:1036) (984:984:984))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|ram_read_address\[4\]\~4)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (514:514:514) (508:508:508))
+        (PORT datad (241:241:241) (307:307:307))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|low_addressa\[5\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1846:1846:1846) (1859:1859:1859))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_comb_bita4)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (271:271:271) (344:344:344))
+        (IOPATH datab combout (381:381:381) (378:378:378))
+        (IOPATH datab cout (445:445:445) (334:334:334))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+        (IOPATH cin cout (58:58:58) (58:58:58))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_reg_bit\[4\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1846:1846:1846) (1859:1859:1859))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1036:1036:1036) (984:984:984))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|ram_read_address\[5\]\~5)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (514:514:514) (508:508:508))
+        (PORT datad (241:241:241) (307:307:307))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|low_addressa\[6\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1846:1846:1846) (1859:1859:1859))
+        (PORT d (80:80:80) (90:90:90))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_comb_bita5)
+    (DELAY
+      (ABSOLUTE
+        (PORT datad (241:241:241) (306:306:306))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+        (IOPATH cin combout (483:483:483) (458:458:458))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|rd_ptr_msb\|counter_reg_bit\[5\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1846:1846:1846) (1859:1859:1859))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1036:1036:1036) (984:984:984))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|ram_read_address\[6\]\~6)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (513:513:513) (506:506:506))
+        (PORT datad (242:242:242) (307:307:307))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_register")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.datain_a_register)
+    (DELAY
+      (ABSOLUTE
+        (PORT d[0] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[1] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[2] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[3] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[4] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[5] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[6] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[7] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[8] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[9] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[10] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[11] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[12] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[13] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[14] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[15] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[16] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[17] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[18] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[19] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[20] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[21] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[22] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[23] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[24] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[25] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[26] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[27] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[28] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[29] (1571:1571:1571) (1522:1522:1522))
+        (PORT d[30] (1214:1214:1214) (1180:1180:1180))
+        (PORT d[31] (1214:1214:1214) (1180:1180:1180))
+        (PORT clk (2195:2195:2195) (2224:2224:2224))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (201:201:201))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_register")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.addr_a_register)
+    (DELAY
+      (ABSOLUTE
+        (PORT d[0] (799:799:799) (791:791:791))
+        (PORT d[1] (799:799:799) (791:791:791))
+        (PORT d[2] (799:799:799) (791:791:791))
+        (PORT d[3] (799:799:799) (791:791:791))
+        (PORT d[4] (799:799:799) (791:791:791))
+        (PORT d[5] (799:799:799) (791:791:791))
+        (PORT d[6] (799:799:799) (791:791:791))
+        (PORT clk (2192:2192:2192) (2220:2220:2220))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (201:201:201))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_register")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.active_core_port_a)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2195:2195:2195) (2224:2224:2224))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_pulse_generator")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.wpgen_a)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2196:2196:2196) (2225:2225:2225))
+        (IOPATH (posedge clk) pulse (0:0:0) (2194:2194:2194))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_pulse_generator")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.rpgen_a)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2196:2196:2196) (2225:2225:2225))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_pulse_generator")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.ftpgen_a)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2196:2196:2196) (2225:2225:2225))
+        (IOPATH (posedge clk) pulse (0:0:0) (2772:2772:2772))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_pulse_generator")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.rwpgen_a)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2196:2196:2196) (2225:2225:2225))
+        (IOPATH (posedge clk) pulse (0:0:0) (2772:2772:2772))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_register")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.addr_b_register)
+    (DELAY
+      (ABSOLUTE
+        (PORT d[0] (756:756:756) (720:720:720))
+        (PORT d[1] (729:729:729) (695:695:695))
+        (PORT d[2] (705:705:705) (671:671:671))
+        (PORT d[3] (744:744:744) (710:710:710))
+        (PORT d[4] (711:711:711) (682:682:682))
+        (PORT d[5] (705:705:705) (670:670:670))
+        (PORT d[6] (694:694:694) (660:660:660))
+        (PORT clk (2153:2153:2153) (2143:2143:2143))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (201:201:201))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_register")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.active_core_port_b)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2153:2153:2153) (2143:2143:2143))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_pulse_generator")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.rpgen_b)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2154:2154:2154) (2144:2144:2144))
+        (IOPATH (posedge clk) pulse (0:0:0) (2618:2618:2618))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_pulse_generator")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.ftpgen_b)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2154:2154:2154) (2144:2144:2144))
+        (IOPATH (posedge clk) pulse (0:0:0) (2802:2802:2802))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_ram_pulse_generator")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|Audio_Out_Right_Channel_FIFO\|Sync_FIFO\|auto_generated\|dpfifo\|FIFOram\|ram_block1a0.rwpgen_b)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (2154:2154:2154) (2144:2144:2144))
+        (IOPATH (posedge clk) pulse (0:0:0) (2802:2802:2802))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~1)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (284:284:284) (368:368:368))
+        (PORT datac (1555:1555:1555) (1497:1497:1497))
+        (PORT datad (287:287:287) (360:360:360))
+        (IOPATH dataa combout (334:334:334) (333:333:333))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_io_ibuf")
+    (INSTANCE AUD_BCLK\~input)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH i o (666:666:666) (838:838:838))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Bit_Clock_Edges\|cur_test_clk)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1741:1741:1741) (1813:1813:1813))
+        (PORT d (216:216:216) (215:215:215))
+        (IOPATH (posedge clk) q (605:605:605) (550:550:550))
+      )
+    )
+    (TIMINGCHECK
+      (SETUP d (posedge clk) (100:100:100))
+      (HOLD d (posedge clk) (52:52:52))
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Bit_Clock_Edges\|last_test_clk)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1848:1848:1848) (1861:1861:1861))
+        (PORT asdata (1705:1705:1705) (1660:1660:1660))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD asdata (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[21\]\~4)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1591:1591:1591) (1534:1534:1534))
+        (PORT datab (1347:1347:1347) (1289:1289:1289))
+        (PORT datad (283:283:283) (356:356:356))
+        (IOPATH dataa combout (380:380:380) (377:377:377))
+        (IOPATH datab combout (350:350:350) (375:375:375))
+        (IOPATH datac combout (366:366:366) (380:380:380))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~65)
+    (DELAY
+      (ABSOLUTE
+        (PORT datac (672:672:672) (649:649:649))
+        (PORT datad (241:241:241) (307:307:307))
+        (IOPATH datac combout (263:263:263) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[1\]\~0)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (765:765:765) (724:724:724))
+        (PORT datab (219:219:219) (246:246:246))
+        (PORT datad (377:377:377) (355:355:355))
+        (IOPATH dataa combout (382:382:382) (394:394:394))
+        (IOPATH datab combout (381:381:381) (361:361:361))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[1\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1864:1864:1864) (1877:1877:1877))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT asdata (1057:1057:1057) (1015:1015:1015))
+        (PORT sload (1639:1639:1639) (1672:1672:1672))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD sload (posedge clk) (171:171:171))
+      (HOLD asdata (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~63)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (940:940:940) (873:873:873))
+        (PORT datab (759:759:759) (751:751:751))
+        (PORT datac (381:381:381) (357:357:357))
+        (PORT datad (242:242:242) (307:307:307))
+        (IOPATH dataa combout (369:369:369) (389:389:389))
+        (IOPATH datab combout (369:369:369) (331:331:331))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~64)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (1027:1027:1027) (1017:1017:1017))
+        (PORT datac (680:680:680) (640:640:640))
+        (PORT datad (189:189:189) (208:208:208))
+        (IOPATH datab combout (369:369:369) (349:349:349))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[2\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1864:1864:1864) (1877:1877:1877))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1367:1367:1367) (1313:1313:1313))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~61)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (458:458:458) (427:427:427))
+        (PORT datab (751:751:751) (747:747:747))
+        (PORT datac (722:722:722) (719:719:719))
+        (PORT datad (235:235:235) (298:298:298))
+        (IOPATH dataa combout (367:367:367) (329:329:329))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~62)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (1026:1026:1026) (1017:1017:1017))
+        (PORT datac (713:713:713) (673:673:673))
+        (PORT datad (189:189:189) (209:209:209))
+        (IOPATH datab combout (369:369:369) (349:349:349))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[3\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1864:1864:1864) (1877:1877:1877))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1367:1367:1367) (1313:1313:1313))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~59)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (456:456:456) (424:424:424))
+        (PORT datab (752:752:752) (748:748:748))
+        (PORT datac (722:722:722) (718:718:718))
+        (PORT datad (236:236:236) (298:298:298))
+        (IOPATH dataa combout (367:367:367) (329:329:329))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~60)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (924:924:924) (866:866:866))
+        (PORT datab (1029:1029:1029) (1020:1020:1020))
+        (PORT datad (188:188:188) (206:206:206))
+        (IOPATH dataa combout (358:358:358) (377:377:377))
+        (IOPATH datab combout (364:364:364) (378:378:378))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[4\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1864:1864:1864) (1877:1877:1877))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1367:1367:1367) (1313:1313:1313))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~57)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (484:484:484) (499:499:499))
+        (PORT datab (762:762:762) (754:754:754))
+        (PORT datac (622:622:622) (566:566:566))
+        (PORT datad (715:715:715) (704:704:704))
+        (IOPATH dataa combout (380:380:380) (360:360:360))
+        (IOPATH datab combout (391:391:391) (399:399:399))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~58)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (1026:1026:1026) (1016:1016:1016))
+        (PORT datac (185:185:185) (213:213:213))
+        (PORT datad (671:671:671) (632:632:632))
+        (IOPATH datab combout (328:328:328) (331:331:331))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[5\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1864:1864:1864) (1877:1877:1877))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1367:1367:1367) (1313:1313:1313))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~55)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (458:458:458) (426:426:426))
+        (PORT datac (726:726:726) (724:724:724))
+        (PORT datad (233:233:233) (295:295:295))
+        (IOPATH dataa combout (367:367:367) (357:357:357))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~56)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1026:1026:1026) (983:983:983))
+        (PORT datab (1028:1028:1028) (1019:1019:1019))
+        (PORT datac (188:188:188) (216:216:216))
+        (PORT datad (722:722:722) (711:711:711))
+        (IOPATH dataa combout (358:358:358) (377:377:377))
+        (IOPATH datab combout (364:364:364) (378:378:378))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[6\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1864:1864:1864) (1877:1877:1877))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1367:1367:1367) (1313:1313:1313))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~53)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (760:760:760) (753:753:753))
+        (PORT datac (232:232:232) (303:303:303))
+        (PORT datad (374:374:374) (351:351:351))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~54)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (388:388:388) (383:383:383))
+        (PORT datab (1028:1028:1028) (1019:1019:1019))
+        (PORT datac (704:704:704) (662:662:662))
+        (PORT datad (723:723:723) (713:713:713))
+        (IOPATH dataa combout (380:380:380) (377:377:377))
+        (IOPATH datab combout (369:369:369) (331:331:331))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[7\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1864:1864:1864) (1877:1877:1877))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1367:1367:1367) (1313:1313:1313))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~51)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (408:408:408) (397:397:397))
+        (PORT datab (266:266:266) (336:336:336))
+        (PORT datac (725:725:725) (722:722:722))
+        (IOPATH dataa combout (367:367:367) (357:357:357))
+        (IOPATH datab combout (381:381:381) (378:378:378))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~52)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (943:943:943) (876:876:876))
+        (PORT datab (1029:1029:1029) (1019:1019:1019))
+        (PORT datac (188:188:188) (216:216:216))
+        (PORT datad (706:706:706) (667:667:667))
+        (IOPATH dataa combout (369:369:369) (389:389:389))
+        (IOPATH datab combout (328:328:328) (331:331:331))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[8\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1864:1864:1864) (1877:1877:1877))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1367:1367:1367) (1313:1313:1313))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~49)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (277:277:277) (316:316:316))
+        (PORT datac (621:621:621) (556:556:556))
+        (PORT datad (706:706:706) (709:709:709))
+        (IOPATH dataa combout (367:367:367) (357:357:357))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~50)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (375:375:375) (369:369:369))
+        (PORT datab (457:457:457) (471:471:471))
+        (PORT datac (923:923:923) (855:855:855))
+        (PORT datad (725:725:725) (725:725:725))
+        (IOPATH dataa combout (380:380:380) (360:360:360))
+        (IOPATH datab combout (391:391:391) (399:399:399))
+        (IOPATH datac combout (263:263:263) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[9\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1850:1850:1850) (1863:1863:1863))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1029:1029:1029) (984:984:984))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~47)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (543:543:543) (544:544:544))
+        (PORT datac (416:416:416) (392:392:392))
+        (PORT datad (236:236:236) (299:299:299))
+        (IOPATH dataa combout (367:367:367) (357:357:357))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~48)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (757:757:757) (770:770:770))
+        (PORT datab (455:455:455) (468:468:468))
+        (PORT datac (186:186:186) (214:214:214))
+        (PORT datad (708:708:708) (666:666:666))
+        (IOPATH dataa combout (327:327:327) (323:323:323))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[10\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1850:1850:1850) (1863:1863:1863))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1029:1029:1029) (984:984:984))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~45)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (542:542:542) (542:542:542))
+        (PORT datab (659:659:659) (590:590:590))
+        (PORT datad (235:235:235) (297:297:297))
+        (IOPATH dataa combout (358:358:358) (377:377:377))
+        (IOPATH datab combout (364:364:364) (378:378:378))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~46)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (757:757:757) (769:769:769))
+        (PORT datab (460:460:460) (475:475:475))
+        (PORT datac (714:714:714) (687:687:687))
+        (PORT datad (190:190:190) (209:209:209))
+        (IOPATH dataa combout (367:367:367) (357:357:357))
+        (IOPATH datab combout (343:343:343) (339:339:339))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[11\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1850:1850:1850) (1863:1863:1863))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1029:1029:1029) (984:984:984))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~43)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (541:541:541) (541:541:541))
+        (PORT datab (456:456:456) (470:470:470))
+        (PORT datac (232:232:232) (303:303:303))
+        (PORT datad (408:408:408) (385:385:385))
+        (IOPATH dataa combout (349:349:349) (365:365:365))
+        (IOPATH datab combout (350:350:350) (375:375:375))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~44)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (758:758:758) (770:770:770))
+        (PORT datac (187:187:187) (215:215:215))
+        (PORT datad (715:715:715) (679:679:679))
+        (IOPATH dataa combout (327:327:327) (323:323:323))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[12\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1850:1850:1850) (1863:1863:1863))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1029:1029:1029) (984:984:984))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~41)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (539:539:539) (539:539:539))
+        (PORT datab (267:267:267) (337:337:337))
+        (PORT datac (937:937:937) (884:884:884))
+        (IOPATH dataa combout (382:382:382) (394:394:394))
+        (IOPATH datab combout (381:381:381) (361:361:361))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~42)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (758:758:758) (770:770:770))
+        (PORT datab (451:451:451) (464:464:464))
+        (PORT datac (914:914:914) (840:840:840))
+        (PORT datad (191:191:191) (211:211:211))
+        (IOPATH dataa combout (367:367:367) (357:357:357))
+        (IOPATH datab combout (343:343:343) (339:339:339))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[13\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1850:1850:1850) (1863:1863:1863))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1029:1029:1029) (984:984:984))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~39)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (542:542:542) (543:543:543))
+        (PORT datab (452:452:452) (466:466:466))
+        (PORT datac (416:416:416) (393:393:393))
+        (PORT datad (234:234:234) (296:296:296))
+        (IOPATH dataa combout (367:367:367) (329:329:329))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~40)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (757:757:757) (769:769:769))
+        (PORT datac (188:188:188) (216:216:216))
+        (PORT datad (722:722:722) (688:688:688))
+        (IOPATH dataa combout (327:327:327) (323:323:323))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[14\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1850:1850:1850) (1863:1863:1863))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1029:1029:1029) (984:984:984))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~37)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (540:540:540) (540:540:540))
+        (PORT datab (264:264:264) (334:334:334))
+        (PORT datac (1293:1293:1293) (1230:1230:1230))
+        (PORT datad (383:383:383) (361:361:361))
+        (IOPATH dataa combout (382:382:382) (394:394:394))
+        (IOPATH datab combout (381:381:381) (361:361:361))
+        (IOPATH datac combout (263:263:263) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~38)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (757:757:757) (770:770:770))
+        (PORT datac (715:715:715) (674:674:674))
+        (PORT datad (189:189:189) (208:208:208))
+        (IOPATH dataa combout (367:367:367) (357:357:357))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[15\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1850:1850:1850) (1863:1863:1863))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1029:1029:1029) (984:984:984))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~35)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (540:540:540) (540:540:540))
+        (PORT datab (459:459:459) (474:474:474))
+        (PORT datac (619:619:619) (551:551:551))
+        (PORT datad (236:236:236) (298:298:298))
+        (IOPATH dataa combout (367:367:367) (329:329:329))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~36)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (757:757:757) (769:769:769))
+        (PORT datac (1020:1020:1020) (980:980:980))
+        (PORT datad (188:188:188) (207:207:207))
+        (IOPATH dataa combout (367:367:367) (357:357:357))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[16\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1850:1850:1850) (1863:1863:1863))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1029:1029:1029) (984:984:984))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~33)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (543:543:543) (543:543:543))
+        (PORT datab (451:451:451) (464:464:464))
+        (PORT datac (233:233:233) (304:304:304))
+        (PORT datad (673:673:673) (628:628:628))
+        (IOPATH dataa combout (349:349:349) (365:365:365))
+        (IOPATH datab combout (350:350:350) (375:375:375))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~34)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (812:812:812) (810:810:810))
+        (PORT datac (658:658:658) (616:616:616))
+        (PORT datad (662:662:662) (628:628:628))
+        (IOPATH dataa combout (367:367:367) (357:357:357))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[17\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1873:1873:1873) (1889:1889:1889))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1347:1347:1347) (1304:1304:1304))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~31)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (731:731:731) (718:718:718))
+        (PORT datab (1226:1226:1226) (1150:1150:1150))
+        (PORT datac (682:682:682) (652:652:652))
+        (PORT datad (234:234:234) (297:297:297))
+        (IOPATH dataa combout (369:369:369) (389:389:389))
+        (IOPATH datab combout (369:369:369) (331:331:331))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~32)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (810:810:810) (807:807:807))
+        (PORT datac (188:188:188) (216:216:216))
+        (PORT datad (381:381:381) (358:358:358))
+        (IOPATH dataa combout (327:327:327) (323:323:323))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[18\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1873:1873:1873) (1889:1889:1889))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1347:1347:1347) (1304:1304:1304))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~29)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (263:263:263) (332:332:332))
+        (PORT datac (1190:1190:1190) (1116:1116:1116))
+        (PORT datad (739:739:739) (701:701:701))
+        (IOPATH datab combout (381:381:381) (378:378:378))
+        (IOPATH datac combout (263:263:263) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~30)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (811:811:811) (808:808:808))
+        (PORT datab (217:217:217) (243:243:243))
+        (PORT datac (971:971:971) (931:931:931))
+        (PORT datad (382:382:382) (360:360:360))
+        (IOPATH dataa combout (328:328:328) (323:323:323))
+        (IOPATH datab combout (381:381:381) (378:378:378))
+        (IOPATH datac combout (263:263:263) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[19\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1873:1873:1873) (1889:1889:1889))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1347:1347:1347) (1304:1304:1304))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~27)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (742:742:742) (732:732:732))
+        (PORT datab (268:268:268) (338:338:338))
+        (PORT datac (714:714:714) (673:673:673))
+        (PORT datad (701:701:701) (679:679:679))
+        (IOPATH dataa combout (382:382:382) (394:394:394))
+        (IOPATH datab combout (381:381:381) (361:361:361))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~28)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (811:811:811) (808:808:808))
+        (PORT datac (188:188:188) (216:216:216))
+        (PORT datad (410:410:410) (387:387:387))
+        (IOPATH dataa combout (327:327:327) (323:323:323))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[20\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1873:1873:1873) (1889:1889:1889))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1347:1347:1347) (1304:1304:1304))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~25)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (741:741:741) (730:730:730))
+        (PORT datab (264:264:264) (334:334:334))
+        (PORT datac (719:719:719) (679:679:679))
+        (PORT datad (700:700:700) (677:677:677))
+        (IOPATH dataa combout (382:382:382) (394:394:394))
+        (IOPATH datab combout (381:381:381) (361:361:361))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~26)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (222:222:222) (253:253:253))
+        (PORT datac (597:597:597) (539:539:539))
+        (PORT datad (758:758:758) (765:765:765))
+        (IOPATH dataa combout (380:380:380) (377:377:377))
+        (IOPATH datac combout (263:263:263) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[21\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1873:1873:1873) (1889:1889:1889))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1347:1347:1347) (1304:1304:1304))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~23)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (730:730:730) (717:717:717))
+        (PORT datab (1224:1224:1224) (1148:1148:1148))
+        (PORT datac (722:722:722) (683:683:683))
+        (PORT datad (236:236:236) (299:299:299))
+        (IOPATH dataa combout (369:369:369) (389:389:389))
+        (IOPATH datab combout (369:369:369) (331:331:331))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~24)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (813:813:813) (811:811:811))
+        (PORT datab (655:655:655) (585:585:585))
+        (PORT datad (190:190:190) (209:209:209))
+        (IOPATH dataa combout (358:358:358) (377:377:377))
+        (IOPATH datab combout (364:364:364) (378:378:378))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[22\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1873:1873:1873) (1889:1889:1889))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1347:1347:1347) (1304:1304:1304))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~21)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (998:998:998) (924:924:924))
+        (PORT datab (264:264:264) (334:334:334))
+        (PORT datac (1193:1193:1193) (1119:1119:1119))
+        (IOPATH dataa combout (367:367:367) (357:357:357))
+        (IOPATH datab combout (381:381:381) (378:378:378))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~22)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (811:811:811) (809:809:809))
+        (PORT datab (1009:1009:1009) (962:962:962))
+        (PORT datac (187:187:187) (214:214:214))
+        (PORT datad (385:385:385) (364:364:364))
+        (IOPATH dataa combout (327:327:327) (323:323:323))
+        (IOPATH datab combout (377:377:377) (395:395:395))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[23\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1873:1873:1873) (1889:1889:1889))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1347:1347:1347) (1304:1304:1304))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~19)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (266:266:266) (340:340:340))
+        (PORT datac (1192:1192:1192) (1118:1118:1118))
+        (PORT datad (926:926:926) (845:845:845))
+        (IOPATH dataa combout (380:380:380) (377:377:377))
+        (IOPATH datac combout (263:263:263) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~20)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (812:812:812) (810:810:810))
+        (PORT datab (219:219:219) (245:245:245))
+        (PORT datac (972:972:972) (932:932:932))
+        (PORT datad (408:408:408) (384:384:384))
+        (IOPATH dataa combout (328:328:328) (323:323:323))
+        (IOPATH datab combout (381:381:381) (378:378:378))
+        (IOPATH datac combout (263:263:263) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[24\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1873:1873:1873) (1889:1889:1889))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1347:1347:1347) (1304:1304:1304))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~17)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (731:731:731) (738:738:738))
+        (PORT datab (1082:1082:1082) (1063:1063:1063))
+        (PORT datac (985:985:985) (928:928:928))
+        (IOPATH dataa combout (380:380:380) (360:360:360))
+        (IOPATH datab combout (391:391:391) (399:399:399))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~18)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1039:1039:1039) (1039:1039:1039))
+        (PORT datab (766:766:766) (720:720:720))
+        (PORT datac (185:185:185) (213:213:213))
+        (PORT datad (1010:1010:1010) (977:977:977))
+        (IOPATH dataa combout (358:358:358) (377:377:377))
+        (IOPATH datab combout (364:364:364) (378:378:378))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[25\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1887:1887:1887) (1903:1903:1903))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1649:1649:1649) (1567:1567:1567))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~15)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1040:1040:1040) (1018:1018:1018))
+        (PORT datab (1080:1080:1080) (1061:1061:1061))
+        (PORT datac (980:980:980) (934:934:934))
+        (PORT datad (235:235:235) (297:297:297))
+        (IOPATH dataa combout (369:369:369) (389:389:389))
+        (IOPATH datab combout (369:369:369) (331:331:331))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~16)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1040:1040:1040) (1040:1040:1040))
+        (PORT datac (659:659:659) (620:620:620))
+        (PORT datad (188:188:188) (207:207:207))
+        (IOPATH dataa combout (367:367:367) (357:357:357))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[26\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1887:1887:1887) (1903:1903:1903))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1649:1649:1649) (1567:1567:1567))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~13)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (905:905:905) (846:846:846))
+        (PORT datab (1076:1076:1076) (1056:1056:1056))
+        (PORT datac (234:234:234) (306:306:306))
+        (IOPATH dataa combout (358:358:358) (377:377:377))
+        (IOPATH datab combout (364:364:364) (378:378:378))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~14)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1035:1035:1035) (1034:1034:1034))
+        (PORT datab (700:700:700) (628:628:628))
+        (PORT datac (988:988:988) (949:949:949))
+        (PORT datad (187:187:187) (206:206:206))
+        (IOPATH dataa combout (358:358:358) (377:377:377))
+        (IOPATH datab combout (364:364:364) (378:378:378))
+        (IOPATH datac combout (263:263:263) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[27\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1887:1887:1887) (1903:1903:1903))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1649:1649:1649) (1567:1567:1567))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~11)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1039:1039:1039) (1015:1015:1015))
+        (PORT datab (1077:1077:1077) (1057:1057:1057))
+        (PORT datac (908:908:908) (835:835:835))
+        (PORT datad (233:233:233) (295:295:295))
+        (IOPATH dataa combout (369:369:369) (389:389:389))
+        (IOPATH datab combout (369:369:369) (331:331:331))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~12)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1038:1038:1038) (1037:1037:1037))
+        (PORT datab (448:448:448) (414:414:414))
+        (PORT datac (186:186:186) (214:214:214))
+        (IOPATH dataa combout (358:358:358) (377:377:377))
+        (IOPATH datab combout (364:364:364) (378:378:378))
+        (IOPATH datac combout (265:265:265) (252:252:252))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[28\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1887:1887:1887) (1903:1903:1903))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1649:1649:1649) (1567:1567:1567))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~9)
+    (DELAY
+      (ABSOLUTE
+        (PORT datab (265:265:265) (335:335:335))
+        (PORT datac (1042:1042:1042) (1026:1026:1026))
+        (PORT datad (696:696:696) (656:656:656))
+        (IOPATH datab combout (381:381:381) (378:378:378))
+        (IOPATH datac combout (263:263:263) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~10)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1041:1041:1041) (1018:1018:1018))
+        (PORT datab (219:219:219) (245:245:245))
+        (PORT datac (377:377:377) (364:364:364))
+        (PORT datad (1009:1009:1009) (997:997:997))
+        (IOPATH dataa combout (382:382:382) (394:394:394))
+        (IOPATH datab combout (381:381:381) (361:361:361))
+        (IOPATH datac combout (263:263:263) (252:252:252))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[29\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1887:1887:1887) (1903:1903:1903))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1649:1649:1649) (1567:1567:1567))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~7)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (754:754:754) (707:707:707))
+        (PORT datab (1082:1082:1082) (1062:1062:1062))
+        (PORT datac (231:231:231) (302:302:302))
+        (PORT datad (1011:1011:1011) (978:978:978))
+        (IOPATH dataa combout (358:358:358) (377:377:377))
+        (IOPATH datab combout (364:364:364) (378:378:378))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~8)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1036:1036:1036) (1035:1035:1035))
+        (PORT datab (448:448:448) (415:415:415))
+        (PORT datad (190:190:190) (209:209:209))
+        (IOPATH dataa combout (358:358:358) (377:377:377))
+        (IOPATH datab combout (364:364:364) (378:378:378))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[30\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1887:1887:1887) (1903:1903:1903))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1649:1649:1649) (1567:1567:1567))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~5)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (701:701:701) (674:674:674))
+        (PORT datac (1044:1044:1044) (1028:1028:1028))
+        (PORT datad (236:236:236) (298:298:298))
+        (IOPATH dataa combout (367:367:367) (357:357:357))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~6)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1037:1037:1037) (1036:1036:1036))
+        (PORT datab (219:219:219) (246:246:246))
+        (PORT datac (989:989:989) (951:951:951))
+        (PORT datad (402:402:402) (377:377:377))
+        (IOPATH dataa combout (328:328:328) (323:323:323))
+        (IOPATH datab combout (381:381:381) (378:378:378))
+        (IOPATH datac combout (263:263:263) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[31\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1887:1887:1887) (1903:1903:1903))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1649:1649:1649) (1567:1567:1567))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~2)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (267:267:267) (341:341:341))
+        (PORT datab (1078:1078:1078) (1058:1058:1058))
+        (PORT datac (921:921:921) (843:843:843))
+        (PORT datad (1009:1009:1009) (976:976:976))
+        (IOPATH dataa combout (380:380:380) (360:360:360))
+        (IOPATH datab combout (391:391:391) (399:399:399))
+        (IOPATH datac combout (265:265:265) (251:251:251))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "cycloneive_lcell_comb")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\~3)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (1037:1037:1037) (1036:1036:1036))
+        (PORT datab (449:449:449) (416:416:416))
+        (PORT datad (188:188:188) (207:207:207))
+        (IOPATH dataa combout (358:358:358) (377:377:377))
+        (IOPATH datab combout (364:364:364) (378:378:378))
+        (IOPATH datad combout (144:144:144) (125:125:125))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|data_out_shift_reg\[32\])
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1887:1887:1887) (1903:1903:1903))
+        (PORT d (80:80:80) (90:90:90))
+        (PORT ena (1649:1649:1649) (1567:1567:1567))
+        (IOPATH (posedge clk) q (213:213:213) (213:213:213))
+      )
+    )
+    (TIMINGCHECK
+      (HOLD d (posedge clk) (171:171:171))
+      (HOLD ena (posedge clk) (171:171:171))
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE audio_controller\|Audio_Out_Serializer\|serial_audio_out_data)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1871:1871:1871) (1873:1873:1873))
+        (PORT d (3767:3767:3767) (3516:3516:3516))
+        (IOPATH (posedge clk) q (632:632:632) (639:639:639))
+      )
+    )
+    (TIMINGCHECK
+      (SETUP d (posedge clk) (91:91:91))
+      (HOLD d (posedge clk) (101:101:101))
+    )
+  )
+)
