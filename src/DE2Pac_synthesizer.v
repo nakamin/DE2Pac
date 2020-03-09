@@ -102,7 +102,8 @@ module DE2Pac_synthesizer(
 
     // --- Temp Sound Test ---
     // TODO: remove this stuff
-    reg [18:0] delay_cnt, delay;
+    reg [18:0] delay_cnt;
+    wire [18:0] delay;
     reg snd;
 
     always @(posedge CLOCK_50)
