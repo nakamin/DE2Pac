@@ -137,6 +137,13 @@ module DE2Pac_synthesizer (
 	assign LEDR[17:10] = key1_code;
 	assign LEDR[9:2] = key2_code;
 
+    // -------------
+    // --- State ---
+    // -------------
+    wire load;
+    assign load = ~(KEY[0] & KEY[1] & KEY[2] & KEY[3]);
+    // TODO: put synthesizer state module here
+
     // -------------------
     // --- Synthesizer ---
     // -------------------
