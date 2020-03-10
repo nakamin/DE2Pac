@@ -38,7 +38,17 @@ module DE2Pac_synthesizer (
 
 	// -- PS2 --
     PS2_KBCLK,
-	PS2_KBDAT
+	PS2_KBDAT,
+
+    // -- VGA --
+    VGA_R,
+    VGA_B,
+    VGA_G,
+    VGA_HS,
+    VGA_VS,
+    VGA_BLANK_N,
+    VGA_SYNC_N,
+    VGA_CLK
 );
     // -----------------------
     // --- IO Declarations ---
@@ -84,6 +94,17 @@ module DE2Pac_synthesizer (
     output AUD_DACDAT;
 
     output I2C_SCLK;
+
+    // -- VGA --
+
+    output			VGA_CLK;   				//	VGA Clock
+	output			VGA_HS;					//	VGA H_SYNC
+	output			VGA_VS;					//	VGA V_SYNC
+	output			VGA_BLANK_N;				//	VGA BLANK
+	output			VGA_SYNC_N;				//	VGA SYNC
+	output	[9:0]	VGA_R;   				//	VGA Red[9:0]
+	output	[9:0]	VGA_G;	 				//	VGA Green[9:0]
+	output	[9:0]	VGA_B;   				//	VGA Blue[9:0]
 
     // -------------------------
     // --- Wire Declarations ---
@@ -146,7 +167,26 @@ module DE2Pac_synthesizer (
     // ----------------
     // --- VGA View ---
     // ----------------
-    // TODO: implement
+    vga_adapter VGA(
+			.resetn(1), // HARDCODE always on, never resets
+			.clock(CLOCK_50),
+			.colour(3'b100), // HARDCODE red boi
+			.x(7'd80), // HARDCODE
+			.y(6'd60), // HARDCODE
+			.plot(1'b1), // HARDCODE always on
+			/* Signals for the DAC to drive the monitor. */
+			.VGA_R(VGA_R),
+			.VGA_G(VGA_G),
+			.VGA_B(VGA_B),
+			.VGA_HS(VGA_HS),
+			.VGA_VS(VGA_VS),
+			.VGA_BLANK(VGA_BLANK_N),
+			.VGA_SYNC(VGA_SYNC_N),
+			.VGA_CLK(VGA_CLK));
+		defparam VGA.RESOLUTION = "160x120";
+		defparam VGA.MONOCHROME = "FALSE";
+		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
+		defparam VGA.BACKGROUND_IMAGE = "black.mif";
 
 
     // ------------------------
