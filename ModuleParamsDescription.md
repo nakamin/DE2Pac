@@ -113,3 +113,53 @@ Below is an outline of all the parameters for the modules
 * **output:** 2 bit, default master (this is here for expandability purposes)
     * 00: master
     * other: master
+
+
+## Other (Global) Parameters
+* **octave:** 3 bit (-3, -2, -1, 0, +1, +2, +3), default: 0
+    * only use first 7 numbers, where -3=000
+    * This octave the octave offset of the keyboard input itself
+
+## Input Parameters
+* **SW[17:15]:** select module
+    * 000: OSC A
+    * 001: OSC B
+    * 010: ADSR
+    * 011: LFO (if implemented)
+    * 100: Filter (if implemented)
+    * otherwise: no module selection
+* **SW[14:12]:** select parameter
+    * **OSC A / OSC B:**
+        * 000: wave
+        * 001: unison
+        * 010: detune
+        * 011: semitone
+        * 100: octave
+        * 101: panning
+        * 110: volume
+        * 111: output
+    * **ADSR:**
+        * 000: attack
+        * 001: decay
+        * 010: sustain
+        * 011: release
+        * 100: target
+        * 101: param
+        * 110: amount
+        * otherwise: no parameter selection
+    * **LFO (if implemented):**
+        * 000: rate
+        * 001: offset
+        * 010: wave
+        * 011: target
+        * 100: param
+        * 101: amount
+        * otherwise: no parameter selection
+    * **Filter (if implemented):**
+        * 000: type
+        * 001: resonance
+        * 011: output
+        * otherwise: no parameter selection
+* **SW[11:0]:** used for loading values into currently selected parameter
+* **KEY[3:0]:** pressing any one of them will load the value into the currently selected parameter's register
+
