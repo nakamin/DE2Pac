@@ -113,3 +113,9 @@ Below is an outline of all the parameters for the modules
 * **output:** 2 bit, default master (this is here for expandability purposes)
     * 00: master
     * other: master
+
+
+## Other (Global) Parameters
+* octave: 3 bit (-3, -2, -1, 0, +1, +2, +3), default: 0
+    * only use first 7 numbers, where -3=000
+    * This octave the octave offset of the keyboard input itself
