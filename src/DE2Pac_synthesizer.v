@@ -148,15 +148,31 @@ module DE2Pac_synthesizer (
     assign right_channel_audio_out = sound;
     assign write_audio_out = audio_in_available & audio_out_allowed;
 
+    // -----------------------
+    // --- Temp adsr Test ---
+    // -----------------------
+    // TODO: remove this stuff
+    wire [7:0] ampl;
+    assign LEDR[7:0] = ampl;
+    ADSR_envelope adsr(
+        .clk(CLOCK_50),
+        .gate(key1_on),
+        .a(4'b1111),
+        .d(4'b1111),
+        .s(4'b1111),
+        .r(4'b1111),
+        .amplitude(ampl)
+    );
+
     // --------------------------
     // --- Temp Keyboard Test ---
     // --------------------------
     // TODO: remove this stuff
-	assign LEDG[7:0] = scan_code;
-	assign LEDR[1] = key1_on;
-	assign LEDR[0] = key2_on;
-	assign LEDR[17:10] = key1_code;
-	assign LEDR[9:2] = key2_code;
+	// assign LEDG[7:0] = scan_code;
+	// assign LEDR[1] = key1_on;
+	// assign LEDR[0] = key2_on;
+	// assign LEDR[17:10] = key1_code;
+	// assign LEDR[9:2] = key2_code;
 
     // -------------
     // --- State ---
