@@ -125,45 +125,85 @@ module DE2Pac_synthesizer (
     wire [7:0] key1_code;
     wire [7:0] key2_code;
 
-    // -----------------------
-    // --- Temp Sound Test ---
-    // -----------------------
-    // TODO: remove this stuff
-    reg [18:0] delay_cnt;
-    wire [18:0] delay;
-    reg snd;
-
-    always @(posedge CLOCK_50)
-        if(delay_cnt == delay) begin
-            delay_cnt <= 0;
-            snd <= !snd;
-    	end else delay_cnt <= delay_cnt + 1;
-
-    assign delay = {SW[3:0], 15'd3000};
-
-    wire [31:0] sound = (SW == 0) ? 0 : snd ? 32'd5000000 << SW[17:16] : -32'd5000000 << SW[17:16];
-    assign read_audio_in = audio_in_available & audio_out_allowed;
-
-    assign left_channel_audio_out = sound;
-    assign right_channel_audio_out = sound;
-    assign write_audio_out = audio_in_available & audio_out_allowed;
-
-    // --------------------------
-    // --- Temp Keyboard Test ---
-    // --------------------------
-    // TODO: remove this stuff
-	assign LEDG[7:0] = scan_code;
-	assign LEDR[1] = key1_on;
-	assign LEDR[0] = key2_on;
-	assign LEDR[17:10] = key1_code;
-	assign LEDR[9:2] = key2_code;
-
     // -------------
     // --- State ---
     // -------------
     wire load;
     assign load = ~(KEY[0] & KEY[1] & KEY[2] & KEY[3]);
-    // TODO: put synthesizer state module here
+    
+    wire [2:0] GLOBAL_octave;
+
+    wire [2:0] OSCA_wave;
+    wire [1:0] OSCA_unison;
+    wire [6:0] OSCA_detune;
+    wire [7:0] OSCA_finetune;
+    wire [4:0] OSCA_semitone;
+    wire [2:0] OSCA_octave;
+    wire [6:0] OSCA_panning;
+    wire [6:0] OSCA_volume;
+    wire [1:0] OSCA_output;
+
+    wire [2:0] OSCB_wave;
+    wire [1:0] OSCB_unison;
+    wire [6:0] OSCB_detune;
+    wire [7:0] OSCB_finetune;
+    wire [4:0] OSCB_semitone;
+    wire [2:0] OSCB_octave;
+    wire [6:0] OSCB_panning;
+    wire [6:0] OSCB_volume;
+    wire [1:0] OSCB_output;
+
+    wire [11:0] ADSR1_attack;
+    wire [11:0] ASDR1_decay;
+    wire [6:0] ADSR1_sustain;
+    wire [11:0] ADSR1_release;
+    wire [3:0] ADSR1_target;
+    wire [3:0] ADSR1_parameter;
+    wire [6:0] ADSR1_amount;
+
+    synthesizer_state state(
+        // Inputs
+        .clock(CLOCK_50),
+        .SW(SW[17:0]),
+        .load(load),
+        .resetn(1'b1), // TODO: unhardcode
+
+        .key1_on(key1_on),
+        .key1_code(key1_code),
+        .key2_on(key2_on),
+        .key2_code(key2_code),
+
+        // Outputs
+        .GLOBAL_octave(GLOBAL_octave),
+
+        .OSCA_wave(OSCA_wave),
+        .OSCA_unison(OSCA_unison),
+        .OSCA_detune(OSCA_detune),
+        .OSCA_finetune(OSCA_finetune),
+        .OSCA_semitone(OSCA_semitone),
+        .OSCA_octave(OSCA_octave),
+        .OSCA_panning(OSCA_panning),
+        .OSCA_volume(OSCA_volume),
+        .OSCA_output(OSCA_output),
+
+        .OSCB_wave(OSCB_wave),
+        .OSCB_unison(OSCB_unison),
+        .OSCB_detune(OSCB_detune),
+        .OSCB_finetune(OSCB_finetune),
+        .OSCB_semitone(OSCB_semitone),
+        .OSCB_octave(OSCB_octave),
+        .OSCB_panning(OSCB_panning),
+        .OSCB_volume(OSCB_volume),
+        .OSCB_output(OSCB_output),
+
+        .ADSR1_attack(ADSR1_attack),
+        .ASDR1_decay(ASDR1_decay),
+        .ADSR1_sustain(ADSR1_sustain),
+        .ADSR1_release(ADSR1_release),
+        .ADSR1_target(ADSR1_target),
+        .ADSR1_parameter(ADSR1_parameter),
+        .ADSR1_amount(ADSR1_amount)
+    );
 
     // -------------------
     // --- Synthesizer ---
@@ -247,6 +287,9 @@ module DE2Pac_synthesizer (
     // --- PS2 Keyboard Scan ---
     // -------------------------
     // (adapted from DE2_115_Synthesizer demo project)
+    wire key1_on_raw;
+    wire key2_on_raw;
+
     reg [31:0] VGA_CLKo;
     wire keyboard_sysclk;
     assign keyboard_sysclk = VGA_CLKo[12];
@@ -257,6 +300,20 @@ module DE2Pac_synthesizer (
         VGA_CLKo <= VGA_CLKo + 1;
     end
 
+    // Debounce key1_on signal
+    Debouncer1Bit d1b_key1_on(
+        .clock(CLOCK_50),
+        .in(key1_on_raw),
+        .out(key1_on)
+    );
+
+    // Debounce key2_on signal
+    Debouncer1Bit d1b_key2_on(
+        .clock(CLOCK_50),
+        .in(key2_on_raw),
+        .out(key2_on)
+    );
+
     ps2_keyboard keyboard(
         .iCLK_50(CLOCK_50),
         .ps2_dat(PS2_KBDAT), // PS2 bus data
@@ -265,10 +322,57 @@ module DE2Pac_synthesizer (
         .reset(KEY[3]), // System reset, active low TODO: convert to use resetn
         .reset1(KEY[2]), // Keyboard reset, active low TODO: convert to use resetn
         .scandata(scan_code), // Scan code
-        .key1_on(key1_on), // Key1 trigger
-        .key2_on(key2_on), // Key2 trigger
+        .key1_on(key1_on_raw), // Key1 trigger
+        .key2_on(key2_on_raw), // Key2 trigger
         .key1_code(key1_code), // Key1 code
         .key2_code(key2_code) // Key2 code
     );
+
+    // ========================
+    // === TESTS AREA BELOW ===
+    // ========================
+
+    // -----------------------
+    // --- Temp Sound Test ---
+    // -----------------------
+    // TODO: remove this stuff
+    reg [18:0] delay_cnt;
+    wire [18:0] delay;
+    reg snd;
+
+    always @(posedge CLOCK_50)
+        if(delay_cnt == delay) begin
+            delay_cnt <= 0;
+            snd <= !snd;
+    	end else delay_cnt <= delay_cnt + 1;
+
+    assign delay = {SW[3:0], 15'd3000};
+
+    wire [31:0] sound = (SW == 0) ? 0 : snd ? 32'd5000000 << SW[17:16] : -32'd5000000 << SW[17:16];
+    assign read_audio_in = audio_in_available & audio_out_allowed;
+
+    assign left_channel_audio_out = sound;
+    assign right_channel_audio_out = sound;
+    assign write_audio_out = audio_in_available & audio_out_allowed;
+
+    // --------------------------
+    // --- Temp Keyboard Test ---
+    // --------------------------
+    // TODO: remove this stuff
+	// assign LEDG[7:0] = scan_code;
+	assign LEDR[0] = key1_on;
+	assign LEDR[1] = key2_on;
+	// assign LEDR[17:10] = key1_code;
+	// assign LEDR[9:2] = key2_code;
+
+    // ----------------------
+    // --- Temp state test --
+    // ----------------------
+    // TODO: remove this stuff
+    assign LEDG[2:0] = GLOBAL_octave;
+    assign LEDG[5:3] = OSCA_wave;
+
+    assign LEDR[3] = (key1_on & key1_code == 8'hE075) ? 1 : 0; // Up arrow
+    assign LEDR[2] = (key1_on & key1_code == 8'hE072) ? 1 : 0; // Down arrow
 
 endmodule

@@ -1,10 +1,18 @@
 module synthesizer_state(
+    // General inputs
+    input clock,
     input [17:0] SW,
     input load, // Active high
     input resetn, // Active low
+    
+    // Key inputs
+    input key1_on,
+    input [7:0] key1_code,
+    input key2_on,
+    input [7:0] key2_code,
 
     // Global outputs
-    output [2:0] GLOBAL_octave,
+    output reg [2:0] GLOBAL_octave,
 
     // OSC A outputs
     output reg [2:0] OSCA_wave,
@@ -75,46 +83,96 @@ module synthesizer_state(
     wire [10:0] curr_selection;
     assign curr_selection = SW[10:0];
 
-    always @(posedge load)
+    initial begin
+        GLOBAL_octave = 3'b100;
+
+        OSCA_wave = 3'b000;
+        OSCA_unison = 2'b00;
+        OSCA_detune = 7'b0110010;
+        OSCA_finetune = 8'b01100101;
+        OSCA_semitone = 5'b01101;
+        OSCA_octave = 3'b100;
+        OSCA_panning = 7'b0110011;
+        OSCA_volume = 7'b1100101;
+        OSCA_output = 2'b01;
+
+        OSCB_wave = 3'b000;
+        OSCB_unison = 2'b00;
+        OSCB_detune = 7'b0110010;
+        OSCB_finetune = 8'b01100101;
+        OSCB_semitone = 5'b01101;
+        OSCB_octave = 3'b100;
+        OSCB_panning = 7'b0110011;
+        OSCB_volume = 7'b1100101;
+        OSCB_output = 2'b01;
+
+        // TODO: these are guessed, pick some nice default values
+        ADSR1_attack = 4'b0100;
+        ASDR1_decay = 4'b0100;
+        ADSR1_sustain = 4'b1111;
+        ADSR1_release = 4'b0100;
+        ADSR1_target = 2'b00;
+        ADSR1_parameter = 4'b000;
+        ADSR1_amount = 7'b1100101;
+    end
+
+    always @(posedge clock) begin
+        // Load values
+        if (load) begin
+            case(module_select)
+                SELECT_OSCA: begin
+                    case(parameter_select)
+                        SELECT_OSC_WAVE: OSCA_wave <= curr_selection[2:0];
+                        SELECT_OSC_UNISON: OSCA_unison <= curr_selection[1:0];
+                        SELECT_OSC_DETUNE: OSCA_detune <= curr_selection[6:0];
+                        SELECT_OSC_FINETUNE: OSCA_finetune <= curr_selection[7:0];
+                        SELECT_OSC_SEMITONE: OSCA_semitone <= curr_selection[4:0];
+                        SELECT_OSC_OCTAVE: OSCA_octave <= curr_selection[2:0];
+                        SELECT_OSC_PANNING: OSCA_panning <= curr_selection[6:0];
+                        SELECT_OSC_VOLUME: OSCA_volume <= curr_selection[6:0];
+                        SELECT_OSC_OUTPUT: OSCA_output <= curr_selection[1:0];
+                    endcase
+                end
+                SELECT_OSCB: begin
+                    case(parameter_select)
+                        SELECT_OSC_WAVE: OSCB_wave <= curr_selection[2:0];
+                        SELECT_OSC_UNISON: OSCB_unison <= curr_selection[1:0];
+                        SELECT_OSC_DETUNE: OSCB_detune <= curr_selection[6:0];
+                        SELECT_OSC_FINETUNE: OSCB_finetune <= curr_selection[7:0];
+                        SELECT_OSC_SEMITONE: OSCB_semitone <= curr_selection[4:0];
+                        SELECT_OSC_OCTAVE: OSCB_octave <= curr_selection[2:0];
+                        SELECT_OSC_PANNING: OSCB_panning <= curr_selection[6:0];
+                        SELECT_OSC_VOLUME: OSCB_volume <= curr_selection[6:0];
+                        SELECT_OSC_OUTPUT: OSCB_output <= curr_selection[1:0];
+                    endcase
+                end
+                SELECT_ASDR1: begin
+                    case(parameter_select)
+                        SELECT_ADSR_ATTACK: ADSR1_attack <= curr_selection[3:0];
+                        SELECT_ADSR_DECAY: ASDR1_decay <= curr_selection[3:0];
+                        SELECT_ADSR_SUSTAIN: ADSR1_sustain <= curr_selection[3:0];
+                        SELECT_ADSR_RELEASE: ADSR1_release <= curr_selection[3:0];
+                        SELECT_ADSR_TARGET: ADSR1_target <= curr_selection[3:0];
+                        SELECT_ADSR_PARAM: ADSR1_parameter <= curr_selection[3:0];
+                        SELECT_ADSR_AMOUNT: ADSR1_amount <= curr_selection[6:0];
+                    endcase
+                end
+            endcase 
+        end
+    end
+
+    // Global octave counter
+    always @(posedge key1_on) 
     begin
-        case(module_select)
-            SELECT_OSCA: begin
-                case(parameter_select)
-                    SELECT_OSC_WAVE: OSCA_wave <= curr_selection[2:0];
-                    SELECT_OSC_UNISON: OSCA_unison <= curr_selection[1:0];
-                    SELECT_OSC_DETUNE: OSCA_detune <= curr_selection[6:0];
-                    SELECT_OSC_FINETUNE: OSCA_finetune <= curr_selection[7:0];
-                    SELECT_OSC_SEMITONE: OSCA_semitone <= curr_selection[4:0];
-                    SELECT_OSC_OCTAVE: OSCA_octave <= curr_selection[2:0];
-                    SELECT_OSC_PANNING: OSCA_panning <= curr_selection[6:0];
-                    SELECT_OSC_VOLUME: OSCA_volume <= curr_selection[6:0];
-                    SELECT_OSC_OUTPUT: OSCA_output <= curr_selection[1:0];
-                endcase
+        if (key1_on) begin
+            // Up arrow and < 6 (+3)
+            if (key1_code == 8'hE075 & GLOBAL_octave < 3'b110) begin
+                GLOBAL_octave <= GLOBAL_octave + 1'b1;
             end
-            SELECT_OSCB: begin
-                case(parameter_select)
-                    SELECT_OSC_WAVE: OSCB_wave <= curr_selection[2:0];
-                    SELECT_OSC_UNISON: OSCB_unison <= curr_selection[1:0];
-                    SELECT_OSC_DETUNE: OSCB_detune <= curr_selection[6:0];
-                    SELECT_OSC_FINETUNE: OSCB_finetune <= curr_selection[7:0];
-                    SELECT_OSC_SEMITONE: OSCB_semitone <= curr_selection[4:0];
-                    SELECT_OSC_OCTAVE: OSCB_octave <= curr_selection[2:0];
-                    SELECT_OSC_PANNING: OSCB_panning <= curr_selection[6:0];
-                    SELECT_OSC_VOLUME: OSCB_volume <= curr_selection[6:0];
-                    SELECT_OSC_OUTPUT: OSCB_output <= curr_selection[1:0];
-                endcase
+            // Down arrow and > 0 (-3)
+            else if (key1_code == 8'hE072 & GLOBAL_octave > 3'b000) begin
+                GLOBAL_octave <= GLOBAL_octave - 1'b1; 
             end
-            SELECT_ASDR1: begin
-                case(parameter_select)
-                    SELECT_ADSR_ATTACK: ADSR1_attack <= curr_selection[3:0];
-                    SELECT_ADSR_DECAY: ASDR1_decay <= curr_selection[3:0];
-                    SELECT_ADSR_SUSTAIN: ADSR1_sustain <= curr_selection[3:0];
-                    SELECT_ADSR_RELEASE: ADSR1_release <= curr_selection[3:0];
-                    SELECT_ADSR_TARGET: ADSR1_target <= curr_selection[3:0];
-                    SELECT_ADSR_PARAM: ADSR1_parameter <= curr_selection[3:0];
-                    SELECT_ADSR_AMOUNT: ADSR1_amount <= curr_selection[6:0];
-                endcase
-            end
-        endcase
+        end
     end
 endmodule
