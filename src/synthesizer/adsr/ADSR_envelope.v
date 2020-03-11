@@ -29,8 +29,8 @@
  *
  * The decay and release phases use an exponential fall-off.
  */
-module envelope_generator #(
-  parameter SAMPLE_CLK_FREQ = 44100,
+module ADSR_envelope #(
+  parameter SAMPLE_CLK_FREQ = 48000,
   parameter ACCUMULATOR_BITS = 26
 )
 (
@@ -40,8 +40,8 @@ module envelope_generator #(
   input [3:0] d,
   input [3:0] s,
   input [3:0] r,
-  output reg [7:0] amplitude,
-  input rst);
+  output active,
+  output reg [7:0] amplitude);
 
   localparam  ACCUMULATOR_SIZE = 2**ACCUMULATOR_BITS;
   localparam  ACCUMULATOR_MAX  = ACCUMULATOR_SIZE-1;
@@ -50,30 +50,28 @@ module envelope_generator #(
   reg [16:0] accumulator_inc;  /* value to add to accumulator */
 
 
-  // calculate the amount to add to the accumulator each clock cycle to
-  // achieve a full-scale value in n number of seconds. (n can be fractional seconds)
-  `define CALCULATE_PHASE_INCREMENT(n) $rtoi(ACCUMULATOR_SIZE / (n * SAMPLE_CLK_FREQ))
-
+  // the amount to add to the accumulator each clock cycle to
+  // achieve a full-scale value
   function [16:0] attack_table;
     input [3:0] param;
     begin
       case(param)
-        4'b0000: attack_table = `CALCULATE_PHASE_INCREMENT(0.002);  // 33554
-        4'b0001: attack_table = `CALCULATE_PHASE_INCREMENT(0.008);
-        4'b0010: attack_table = `CALCULATE_PHASE_INCREMENT(0.016);
-        4'b0011: attack_table = `CALCULATE_PHASE_INCREMENT(0.024);
-        4'b0100: attack_table = `CALCULATE_PHASE_INCREMENT(0.038);
-        4'b0101: attack_table = `CALCULATE_PHASE_INCREMENT(0.056);
-        4'b0110: attack_table = `CALCULATE_PHASE_INCREMENT(0.068);
-        4'b0111: attack_table = `CALCULATE_PHASE_INCREMENT(0.080);
-        4'b1000: attack_table = `CALCULATE_PHASE_INCREMENT(0.100);
-        4'b1001: attack_table = `CALCULATE_PHASE_INCREMENT(0.250);
-        4'b1010: attack_table = `CALCULATE_PHASE_INCREMENT(0.500);
-        4'b1011: attack_table = `CALCULATE_PHASE_INCREMENT(0.800);
-        4'b1100: attack_table = `CALCULATE_PHASE_INCREMENT(1.000);
-        4'b1101: attack_table = `CALCULATE_PHASE_INCREMENT(3.000);
-        4'b1110: attack_table = `CALCULATE_PHASE_INCREMENT(5.000);
-        4'b1111: attack_table = `CALCULATE_PHASE_INCREMENT(8.000);
+        4'b0000: attack_table = 699050;
+        4'b0001: attack_table = 174762;
+        4'b0010: attack_table = 87381;
+        4'b0011: attack_table = 58254;
+        4'b0100: attack_table = 36792;
+        4'b0101: attack_table = 24966;
+        4'b0110: attack_table = 20560;
+        4'b0111: attack_table = 17476;
+        4'b1000: attack_table = 13981;
+        4'b1001: attack_table = 5592;
+        4'b1010: attack_table = 2796;
+        4'b1011: attack_table = 1747;
+        4'b1100: attack_table = 1398;
+        4'b1101: attack_table = 466;
+        4'b1110: attack_table = 279;
+        4'b1111: attack_table = 174;
         default: attack_table = 65535;
       endcase
     end
@@ -83,22 +81,22 @@ module envelope_generator #(
     input [3:0] param;
     begin
       case(param)
-        4'b0000: decay_release_table = `CALCULATE_PHASE_INCREMENT(0.006);
-        4'b0001: decay_release_table = `CALCULATE_PHASE_INCREMENT(0.024);
-        4'b0010: decay_release_table = `CALCULATE_PHASE_INCREMENT(0.048);
-        4'b0011: decay_release_table = `CALCULATE_PHASE_INCREMENT(0.072);
-        4'b0100: decay_release_table = `CALCULATE_PHASE_INCREMENT(0.114);
-        4'b0101: decay_release_table = `CALCULATE_PHASE_INCREMENT(0.168);
-        4'b0110: decay_release_table = `CALCULATE_PHASE_INCREMENT(0.204);
-        4'b0111: decay_release_table = `CALCULATE_PHASE_INCREMENT(0.240);
-        4'b1000: decay_release_table = `CALCULATE_PHASE_INCREMENT(0.300);
-        4'b1001: decay_release_table = `CALCULATE_PHASE_INCREMENT(0.750);
-        4'b1010: decay_release_table = `CALCULATE_PHASE_INCREMENT(1.500);
-        4'b1011: decay_release_table = `CALCULATE_PHASE_INCREMENT(2.400);
-        4'b1100: decay_release_table = `CALCULATE_PHASE_INCREMENT(3.000);
-        4'b1101: decay_release_table = `CALCULATE_PHASE_INCREMENT(9.000);
-        4'b1110: decay_release_table = `CALCULATE_PHASE_INCREMENT(15.00);
-        4'b1111: decay_release_table = `CALCULATE_PHASE_INCREMENT(24.00);
+        4'b0000: decay_release_table = 233016;
+        4'b0001: decay_release_table = 58254;
+        4'b0010: decay_release_table = 29127;
+        4'b0011: decay_release_table = 19418;
+        4'b0100: decay_release_table = 12264;
+        4'b0101: decay_release_table = 8322;
+        4'b0110: decay_release_table = 6853;
+        4'b0111: decay_release_table = 5825;
+        4'b1000: decay_release_table = 4660;
+        4'b1001: decay_release_table = 1864;
+        4'b1010: decay_release_table = 932;
+        4'b1011: decay_release_table = 582;
+        4'b1100: decay_release_table = 466;
+        4'b1101: decay_release_table = 155;
+        4'b1110: decay_release_table = 93;
+        4'b1111: decay_release_table = 58;
         default: decay_release_table = 65535;
       endcase
     end
@@ -111,6 +109,7 @@ module envelope_generator #(
   localparam RELEASE = 3'd4;
 
   reg[2:0] state;
+  assign active = (state == OFF) ? 0 : 1;
 
   initial begin
     state = OFF;

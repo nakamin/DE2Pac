@@ -121,6 +121,10 @@ Audio and Video-in Configuration Module: http://www.eecg.utoronto.ca/~jayar/ece2
 From Class:
 - src/hex/HexDecoder.v
 
+ADSR envelope generator: https://github.com/gundy/tiny-synth
+- src/synthesizer/adsr/eight_bit_exponential_decay_lookup.v
+- src/synthesizer/adsr/envelope_gen.v
+
 Repo & Video
 ------------
 <At the end of the project, provide links to your code repository and presentation video (and passwords if not public>
