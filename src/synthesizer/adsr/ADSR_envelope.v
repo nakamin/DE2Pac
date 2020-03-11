@@ -40,6 +40,7 @@ module ADSR_envelope #(
   input [3:0] d,
   input [3:0] s,
   input [3:0] r,
+  output active,
   output reg [7:0] amplitude);
 
   localparam  ACCUMULATOR_SIZE = 2**ACCUMULATOR_BITS;
@@ -108,6 +109,7 @@ module ADSR_envelope #(
   localparam RELEASE = 3'd4;
 
   reg[2:0] state;
+  assign active = (state == OFF) ? 0 : 1;
 
   initial begin
     state = OFF;

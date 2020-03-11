@@ -141,7 +141,7 @@ module DE2Pac_synthesizer (
 
     assign delay = {SW[3:0], 15'd3000};
 
-    wire [31:0] sound = (SW == 0) ? 0 : snd ? 32'd5000000 << SW[17:16] : -32'd5000000 << SW[17:16];
+    wire [31:0] sound = snd ? {ampl, {20{1'b0}}} : -{ampl, {20{1'b0}}};
     assign read_audio_in = audio_in_available & audio_out_allowed;
 
     assign left_channel_audio_out = sound;
@@ -155,13 +155,14 @@ module DE2Pac_synthesizer (
     wire [7:0] ampl;
     assign LEDR[7:0] = ampl;
     ADSR_envelope adsr(
-        .clk(CLOCK_50),
+        .clk(AUD_DACLRCK),
         .gate(key1_on),
-        .a(4'b1111),
-        .d(4'b1111),
-        .s(4'b1111),
-        .r(4'b1111),
-        .amplitude(ampl)
+        .a(4'b0001),
+        .d(4'b0010),
+        .s(4'b0110),
+        .r(4'b0111),
+        .amplitude(ampl),
+        .active(LEDR[10])
     );
 
     // --------------------------
