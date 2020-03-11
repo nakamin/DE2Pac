@@ -30,17 +30,10 @@ Below is an outline of all the parameters for the modules
     * other: master
 
 ## ADSR Envelope
-* **attack:** 12 bit, (0ms-4095ms) default 000001100100 (100ms)
-    * the decimal value of the number corresponds to the number of milliseconds
-    * 000000000000 (0ms), 111111111111 (4095ms = 4.095s)
-* **decay:** 12 bit, (0ms-4095ms) default 000001100100 (100ms)
-    * the decimal value of the number corresponds to the number of milliseconds
-    * 000000000000 (0ms), 111111111111 (4095ms = 4.095s)
-* **sustain:** 7 bit (0%-100%), default 100%
-    * only use first 101 numbers, where 0%=0000000
-* **release:** 12 bit, (0ms-4095ms) default 000001100100 (100ms)
-    * the decimal value of the number corresponds to the number of milliseconds
-    * 000000000000 (0ms), 111111111111 (4095ms = 4.095s)
+* **attack:** 4 bit
+* **decay:** 4 bit
+* **sustain:** 4 bit
+* **release:** 4 bit
 * **target:** 4 bit, default none
     * 00: none
     * 01: OSC A
@@ -128,38 +121,39 @@ Below is an outline of all the parameters for the modules
     * 011: LFO (if implemented)
     * 100: Filter (if implemented)
     * otherwise: no module selection
-* **SW[14:12]:** select parameter
+* **SW[14:11]:** select parameter
     * **OSC A / OSC B:**
-        * 000: wave
-        * 001: unison
-        * 010: detune
-        * 011: semitone
-        * 100: octave
-        * 101: panning
-        * 110: volume
-        * 111: output
+        * 0000: wave
+        * 0001: unison
+        * 0010: detune
+        * 0011: finetune
+        * 0100: semitone
+        * 0101: octave
+        * 0110: panning
+        * 0111: volume
+        * 1000: output
     * **ADSR:**
-        * 000: attack
-        * 001: decay
-        * 010: sustain
-        * 011: release
-        * 100: target
-        * 101: param
-        * 110: amount
+        * 0000: attack
+        * 0001: decay
+        * 0010: sustain
+        * 0011: release
+        * 0100: target
+        * 0101: param
+        * 0110: amount
         * otherwise: no parameter selection
     * **LFO (if implemented):**
-        * 000: rate
-        * 001: offset
-        * 010: wave
-        * 011: target
-        * 100: param
-        * 101: amount
+        * 0000: rate
+        * 0001: offset
+        * 0010: wave
+        * 0011: target
+        * 0100: param
+        * 0101: amount
         * otherwise: no parameter selection
     * **Filter (if implemented):**
-        * 000: type
-        * 001: resonance
-        * 011: output
+        * 0000: type
+        * 0001: resonance
+        * 0011: output
         * otherwise: no parameter selection
-* **SW[11:0]:** used for loading values into currently selected parameter
+* **SW[10:0]:** used for loading values into currently selected parameter
 * **KEY[3:0]:** pressing any one of them will load the value into the currently selected parameter's register
 
