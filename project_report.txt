@@ -125,6 +125,9 @@ ADSR envelope generator: https://github.com/gundy/tiny-synth
 - src/synthesizer/adsr/eight_bit_exponential_decay_lookup.v
 - src/synthesizer/adsr/envelope_gen.v
 
+Quartus Makefile
+- https://github.com/mfischer/Altera-Makefile
+
 Repo & Video
 ------------
 <At the end of the project, provide links to your code repository and presentation video (and passwords if not public>
