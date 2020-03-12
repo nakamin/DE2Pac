@@ -97,10 +97,9 @@ Weekly Reports
 
 [This is an example of a report where things didn't go so well.]
 Week 1: 
-	We added and tested the sensors and the main FSM. 
-	The distance sensor we had intended to use didn't work as expected (wasn't precise enough at further distances, only seems to work accurately within 5-10cm), so instead we've decided to change the project to use a light sensor instead.
-	Had trouble getting the FSM to work (kept getting stuck in state 101, took longer to debug than expected), so we may not be able to add the high score feature. We have updated that in the project description as an optional feature.
-
+We have designs for what the VGA should display, and what inputs it will be given and what outputs it will send to the display. We worked on getting the VGA Module up and running but we're running into many roadblocks. We discovered that characters can be drawn on the vga using a bitmap
+We can indicate which pixels of the n x m space assigned to a character should be colored by assigning a value of 1 to them. (This idea came from char_decoder.v
+from notepad--). We talked to Mickey to see if he could help us out and he suggested that we try to find a vga adapter that's more sophisticated than the one we're using in class, but we can't find any. We might have to scale down to using some of the built-in DE2 LCD or Hex displays. We're going to the makerspace tomorrow to see if we can make some more progress.
 
 
 References
