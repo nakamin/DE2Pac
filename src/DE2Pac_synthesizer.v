@@ -325,6 +325,24 @@ module DE2Pac_synthesizer (
     // === TESTS AREA BELOW ===
     // ========================
 
+    // ---------------------
+    // --- Note LUT Test ---
+    // ---------------------
+    // TODO: remove this stuff
+    wire [6:0] note;
+
+    assign LEDG[6:0] = note;
+    assign LEDR[0] = key1_on;
+    assign LEDR[17:10] = key1_code;
+    assign LEDR[3:1] = GLOBAL_octave;
+
+    noteLUT nlut(
+        .key_code(key1_code),
+        .enable(key1_on),
+        .GLOBAL_octave(GLOBAL_octave),
+        .note(note)
+    );
+
     // -----------------------
     // --- Temp Sound Test ---
     // -----------------------
@@ -408,5 +426,4 @@ module DE2Pac_synthesizer (
 
     // assign LEDR[3] = (key1_on & key1_code == 8'h75) ? 1 : 0; // Up arrow
     // assign LEDR[2] = (key1_on & key1_code == 8'h72) ? 1 : 0; // Down arrow
-
 endmodule

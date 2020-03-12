@@ -1,5 +1,6 @@
 module noteLUT(
     input [7:0] key_code,
+    input enable, // Active high
     input [2:0] GLOBAL_octave,
     output [6:0] note
 );
@@ -42,6 +43,9 @@ module noteLUT(
     // - 0001101 (13): C#1
     // - 0001110 (14): D#1
     // ...
+    // - 0111100 (60): C5
+    // - 0111101 (61): C#5
+    // ...
     // - 1100000 (96): C8
     // - 1100001 (97): C#8
     // ...
@@ -50,9 +54,10 @@ module noteLUT(
     // Formula: note = note_map[note] + 12 * (offset_octave + GLOBAL_octave - 3), where offset_octave in [0, 8]
 
     wire [6:0] GLOBAL_octave_sub;
-    assign octave_sub = GLOBAL_octave - 7'd3;
+    assign GLOBAL_octave_sub = GLOBAL_octave + 7'd2;
 
     assign note = (
+    (enable == 1'b0) ? 7'b0111111 : (
     (key_code == 8'h15) ? (NOTE_C + 7'd12 * (7'd0 + GLOBAL_octave_sub)): (//   Q  = C (+0)
     (key_code == 8'h1E) ? (NOTE_Csh + 7'd12 * (7'd0 + GLOBAL_octave_sub)): (// 2  = C# (+0) 
     (key_code == 8'h1D) ? (NOTE_D + 7'd12 * (7'd0 + GLOBAL_octave_sub)): (//   W  = D  (+0) 
@@ -90,6 +95,6 @@ module noteLUT(
     (key_code == 8'h49) ? (NOTE_D + 7'd12 * (-7'd2 + GLOBAL_octave_sub)): (// >.  = D  (-2)
     (key_code == 8'h4C) ? (NOTE_Dsh + 7'd12 * (-7'd2 + GLOBAL_octave_sub)): (//:; = D# (-2)
     (key_code == 8'h4A) ? (NOTE_E + 7'd12 * (-7'd2 + GLOBAL_octave_sub)) // ?/    = E  (-2) 
-    : 7'b1101100 // One above max note value (ie no note)
-    )))))))))))))))))))))))))))))))))))));
+    : 7'b0111111 // One above max note value (ie no note)
+    ))))))))))))))))))))))))))))))))))))));
 endmodule
