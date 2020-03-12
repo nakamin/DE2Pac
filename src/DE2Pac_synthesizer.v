@@ -365,7 +365,7 @@ module DE2Pac_synthesizer (
     assign LEDG[2:0] = GLOBAL_octave;
     assign LEDG[5:3] = OSCA_wave;
 
-    assign LEDR[3] = (key1_on & key1_code == 8'hE075) ? 1 : 0; // Up arrow
-    assign LEDR[2] = (key1_on & key1_code == 8'hE072) ? 1 : 0; // Down arrow
+    assign LEDR[3] = (key1_on & key1_code == 8'h75) ? 1 : 0; // Up arrow
+    assign LEDR[2] = (key1_on & key1_code == 8'h72) ? 1 : 0; // Down arrow
 
 endmodule
