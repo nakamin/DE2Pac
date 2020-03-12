@@ -24,16 +24,14 @@ module DE2Pac_synthesizer (
 
     // -- Audio --
 	AUD_ADCDAT,
-
 	AUD_BCLK,
 	AUD_ADCLRCK,
 	AUD_DACLRCK,
-
-	I2C_SDAT,
-
 	AUD_XCK,
 	AUD_DACDAT,
 
+    // -- I2C --
+	I2C_SDAT,
 	I2C_SCLK,
 
 	// -- PS2 --
@@ -53,7 +51,6 @@ module DE2Pac_synthesizer (
     // -----------------------
     // --- IO Declarations ---
     // -----------------------
-
     // -- Clock --
     input CLOCK_50;
 
@@ -83,33 +80,29 @@ module DE2Pac_synthesizer (
 
     // -- Audio --
     input AUD_ADCDAT;
-
     inout AUD_BCLK;
     inout AUD_ADCLRCK;
     inout AUD_DACLRCK; // Output clock of audio stream, runs at 48kHz in our project
-
-    inout I2C_SDAT;
-
     output AUD_XCK;
     output AUD_DACDAT;
 
+    // -- I2C --
+    inout I2C_SDAT;
     output I2C_SCLK;
 
     // -- VGA --
-
-    output			VGA_CLK;   				//	VGA Clock
-	output			VGA_HS;					//	VGA H_SYNC
-	output			VGA_VS;					//	VGA V_SYNC
-	output			VGA_BLANK_N;				//	VGA BLANK
-	output			VGA_SYNC_N;				//	VGA SYNC
-	output	[9:0]	VGA_R;   				//	VGA Red[9:0]
-	output	[9:0]	VGA_G;	 				//	VGA Green[9:0]
-	output	[9:0]	VGA_B;   				//	VGA Blue[9:0]
+    output VGA_CLK;   				//	VGA Clock
+	output VGA_HS;					//	VGA H_SYNC
+	output VGA_VS;					//	VGA V_SYNC
+	output VGA_BLANK_N;				//	VGA BLANK
+	output VGA_SYNC_N;				//	VGA SYNC
+	output [9:0] VGA_R;   			//	VGA Red[9:0]
+	output [9:0] VGA_G;	 			//	VGA Green[9:0]
+	output [9:0] VGA_B;   			//	VGA Blue[9:0]
 
     // -------------------------
     // --- Wire Declarations ---
     // -------------------------
-
     wire audio_in_available;
     wire [31:0]	left_channel_audio_in;
     wire [31:0]	right_channel_audio_in;
