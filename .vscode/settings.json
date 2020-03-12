@@ -16,7 +16,6 @@
                 "color": "white",
                 "singleInstance": true,
                 "command": "wsl make program"
-            }
             },
             {
                 "cwd": "${workspaceFolder}/quartus",
