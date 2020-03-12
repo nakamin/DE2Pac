@@ -389,9 +389,9 @@ module DE2Pac_synthesizer (
         .out(HEX1)
     );
 
-    HexDecoder h1(
+    HexDecoder h0(
         .in(ampl[31:28]),
-        .out(HEX1)
+        .out(HEX0)
     );
 
     always @(posedge CLOCK_50)
@@ -423,10 +423,10 @@ module DE2Pac_synthesizer (
     // --- Temp state test --
     // ----------------------
     // TODO: remove this stuff
-    assign LEDG[2:0] = GLOBAL_octave;
-    assign LEDG[5:3] = OSCA_wave;
+    // assign LEDG[2:0] = GLOBAL_octave;
+    // assign LEDG[5:3] = OSCA_wave;
 
-    assign LEDR[3] = (key1_on & key1_code == 8'h75) ? 1 : 0; // Up arrow
-    assign LEDR[2] = (key1_on & key1_code == 8'h72) ? 1 : 0; // Down arrow
+    // assign LEDR[3] = (key1_on & key1_code == 8'h75) ? 1 : 0; // Up arrow
+    // assign LEDR[2] = (key1_on & key1_code == 8'h72) ? 1 : 0; // Down arrow
 
 endmodule
