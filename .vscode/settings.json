@@ -1,0 +1,30 @@
+{
+    "actionButtons": {
+        "defaultColor": "#ffff", // Can also use string color names.
+        "loadNpmCommands": false, // Disables automatic generation of actions for npm commands.
+        "commands": [
+            {
+                "cwd": "${workspaceFolder}/quartus",
+                "name": "Re-compile",
+                "color": "white",
+                "singleInstance": true,
+                "command": "wsl make"
+            },
+            {
+                "cwd": "${workspaceFolder}/quartus",
+                "name": "Program Board",
+                "color": "white",
+                "singleInstance": true,
+                "command": "wsl make program"
+            }
+            },
+            {
+                "cwd": "${workspaceFolder}/quartus",
+                "name": "Clean Project",
+                "color": "white",
+                "singleInstance": true,
+                "command": "wsl make clean"
+            }
+        ]
+    }
+}
