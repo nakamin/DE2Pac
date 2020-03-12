@@ -1,0 +1,56 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Synthesis and Analysis",
+            "command": "wsl",
+            "args": [
+                "make",
+                "-C",
+                "quartus",
+                "map"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "Compile Project",
+            "command": "wsl",
+            "args": [
+                "make",
+                "-C",
+                "quartus"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "Program DE2",
+            "command": "wsl",
+            "args": [
+                "make",
+                "-C",
+                "quartus",
+                "program"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "Clean project",
+            "command": "wsl",
+            "args": [
+                "make",
+                "-C",
+                "quartus",
+                "clean"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}

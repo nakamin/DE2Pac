@@ -44,7 +44,6 @@ smart: smart.log
 ###################################################################
 
 MAP_ARGS = --read_settings_files=on $(addprefix --source=,$(SRCS))
-
 FIT_ARGS = --part=$(PART) --read_settings_files=on
 ASM_ARGS =
 STA_ARGS =

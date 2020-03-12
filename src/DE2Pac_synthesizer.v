@@ -104,13 +104,13 @@ module DE2Pac_synthesizer (
     // --- Wire Declarations ---
     // -------------------------
     wire audio_in_available;
-    wire [31:0]	left_channel_audio_in;
-    wire [31:0]	right_channel_audio_in;
+    wire [16:0]	left_channel_audio_in;
+    wire [16:0]	right_channel_audio_in;
     wire read_audio_in;
 
     wire audio_out_allowed;
-    wire [31:0]	left_channel_audio_out;
-    wire [31:0]	right_channel_audio_out;
+    wire [16:0]	left_channel_audio_out;
+    wire [16:0]	right_channel_audio_out;
     wire write_audio_out;
 
     wire key1_on;
@@ -153,7 +153,7 @@ module DE2Pac_synthesizer (
     wire [3:0] ADSR1_target;
     wire [3:0] ADSR1_parameter;
     wire [6:0] ADSR1_amount;
-
+    
     synthesizer_state state(
         // Inputs
         .clock(CLOCK_50),
@@ -329,32 +329,73 @@ module DE2Pac_synthesizer (
     // --- Temp Sound Test ---
     // -----------------------
     // TODO: remove this stuff
-    reg [18:0] delay_cnt;
-    wire [18:0] delay;
-    reg snd;
+    // reg [18:0] delay_cnt;
+    // wire [18:0] delay;
+    // reg snd;
 
-    always @(posedge CLOCK_50)
-        if(delay_cnt == delay) begin
-            delay_cnt <= 0;
-            snd <= !snd;
-    	end else delay_cnt <= delay_cnt + 1;
+    // wire [27:0] count_init;
+    // reg [27:0] count;
+    // reg [15:0] ampl;
 
-    assign delay = {SW[3:0], 15'd3000};
+    // assign count_init = 28'b0000000001111010000100100000 - 1'b1;
+    // wire pulse = (count == 28'b0000000000000000000000000000) ? 1'b1 : 1'b0;
 
-    wire [31:0] sound = (SW == 0) ? 0 : snd ? 32'd5000000 << SW[17:16] : -32'd5000000 << SW[17:16];
-    assign read_audio_in = audio_in_available & audio_out_allowed;
+    // always @ (posedge CLOCK_50)
+    // begin
+    //     if (count == 0)
+    //         count <= count_init;
+    //     else
+    //         count <= count - 1'b1;
+    // end
 
-    assign left_channel_audio_out = sound;
-    assign right_channel_audio_out = sound;
-    assign write_audio_out = audio_in_available & audio_out_allowed;
+    // always @ (posedge pulse)
+    // begin
+    //     if (~KEY[0]) ampl <= 0;
+    //     else if (~SW[0]) ampl <= ampl + 1'b1;
+    // end
+
+    // HexDecoder h0(
+    //     .in(ampl[3:0]),
+    //     .out(HEX0)
+    // );
+
+    // HexDecoder h1(
+    //     .in(ampl[7:4]),
+    //     .out(HEX1)
+    // );
+
+    // HexDecoder h2(
+    //     .in(ampl[11:8]),
+    //     .out(HEX2)
+    // );
+
+    // HexDecoder h3(
+    //     .in(ampl[15:12]),
+    //     .out(HEX3)
+    // );
+
+    // always @(posedge CLOCK_50)
+    //     if(delay_cnt == delay) begin
+    //         delay_cnt <= 0;
+    //         snd <= !snd;
+    // 	end else delay_cnt <= delay_cnt + 1;
+
+    // assign delay = {4'b1111, 15'd3000};
+
+    // wire [31:0] sound = snd ? ampl : -ampl;
+
+    // assign read_audio_in = audio_in_available & audio_out_allowed;
+    // assign left_channel_audio_out = sound;
+    // assign right_channel_audio_out = sound;
+    // assign write_audio_out = audio_in_available & audio_out_allowed;
 
     // --------------------------
     // --- Temp Keyboard Test ---
     // --------------------------
     // TODO: remove this stuff
 	// assign LEDG[7:0] = scan_code;
-	assign LEDR[0] = key1_on;
-	assign LEDR[1] = key2_on;
+	// assign LEDR[0] = key1_on;
+	// assign LEDR[1] = key2_on;
 	// assign LEDR[17:10] = key1_code;
 	// assign LEDR[9:2] = key2_code;
 
@@ -362,10 +403,10 @@ module DE2Pac_synthesizer (
     // --- Temp state test --
     // ----------------------
     // TODO: remove this stuff
-    assign LEDG[2:0] = GLOBAL_octave;
-    assign LEDG[5:3] = OSCA_wave;
+    // assign LEDG[2:0] = GLOBAL_octave;
+    // assign LEDG[5:3] = OSCA_wave;
 
-    assign LEDR[3] = (key1_on & key1_code == 8'h75) ? 1 : 0; // Up arrow
-    assign LEDR[2] = (key1_on & key1_code == 8'h72) ? 1 : 0; // Down arrow
+    // assign LEDR[3] = (key1_on & key1_code == 8'h75) ? 1 : 0; // Up arrow
+    // assign LEDR[2] = (key1_on & key1_code == 8'h72) ? 1 : 0; // Down arrow
 
 endmodule
