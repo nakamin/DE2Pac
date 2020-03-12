@@ -140,12 +140,12 @@ begin
                 end
                 else if (is_key)
                 begin
-                if ((!key1_on) && (key2_code! = keycode_o))
-                begin
-                    key1_on   = 1;
-                    key1_code = keycode_o;
-                end
-                else if ((!key2_on) && (key1_code! = keycode_o))
+                    if ((!key1_on) && (key2_code != keycode_o))
+                    begin
+                        key1_on = 1;
+                        key1_code = keycode_o;
+                    end
+                else if ((!key2_on) && (key1_code != keycode_o))
                 begin
                     key2_on   = 1;
                     key2_code = keycode_o;
@@ -183,7 +183,7 @@ begin
                     begin
                         if (!keyboard_off)
                             revcnt = 0;
-                        else if (revcnt > = 10)
+                        else if (revcnt >= 10)
                             revcnt = 0;
                         else
                             revcnt = revcnt+1;

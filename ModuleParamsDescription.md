@@ -18,7 +18,7 @@ Below is an outline of all the parameters for the modules
     * only use the first 201 numbers, where -100 cent = 00000000
 * **semitone:** 5 bit (-12, ..., -1, 0, +1 , ..., +12), default: 0 (01101)
     * only use first 25 numbers, where -12=00000
-* **octave:** 3 bit (-3, -2, -1, 0, +1, +2, +3), default: 0 (100)
+* **octave:** 3 bit (-3, -2, -1, 0, +1, +2, +3), default: 0 (011)
     * only use first 7 numbers, where -3=000
 * **panning:** 7 bit (-50L, ..., -1L, 0C, +1R, ..., +50R): default: OC (0110011)
     * only use first 101 numbers, where -50L=0000000, 0C=0110010, +50L=1100101
@@ -110,7 +110,7 @@ Below is an outline of all the parameters for the modules
 
 
 ## Other (Global) Parameters
-* **octave:** 3 bit (-3, -2, -1, 0, +1, +2, +3), default: 0
+* **octave:** 3 bit (-3, -2, -1, 0, +1, +2, +3), default: 0 (011)
     * only use first 7 numbers, where -3=000
     * This octave the octave offset of the keyboard input itself
 

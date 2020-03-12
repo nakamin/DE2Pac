@@ -71,14 +71,14 @@ module synthesizer_state(input clock,
     assign curr_selection = SW[10:0];
     
     initial begin
-        GLOBAL_octave = 3'b100;
+        GLOBAL_octave = 3'b011;
         
         OSCA_wave     = 3'b000;
         OSCA_unison   = 2'b00;
         OSCA_detune   = 7'b0110010;
         OSCA_finetune = 8'b01100101;
         OSCA_semitone = 5'b01101;
-        OSCA_octave   = 3'b100;
+        OSCA_octave   = 3'b011;
         OSCA_panning  = 7'b0110011;
         OSCA_volume   = 7'b1100101;
         OSCA_output   = 2'b01;
@@ -88,7 +88,7 @@ module synthesizer_state(input clock,
         OSCB_detune   = 7'b0110010;
         OSCB_finetune = 8'b01100101;
         OSCB_semitone = 5'b01101;
-        OSCB_octave   = 3'b100;
+        OSCB_octave   = 3'b011;
         OSCB_panning  = 7'b0110011;
         OSCB_volume   = 7'b1100101;
         OSCB_output   = 2'b01;
