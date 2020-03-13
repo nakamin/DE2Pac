@@ -121,88 +121,87 @@ module DE2Pac_synthesizer (
     // -------------
     // --- State ---
     // -------------
-    wire load;
-    assign load = ~(KEY[0] & KEY[1] & KEY[2] & KEY[3]);
+    // wire load;
+    // assign load = ~(KEY[0] & KEY[1] & KEY[2] & KEY[3]);
     
-    wire [2:0] GLOBAL_octave;
+    // wire [2:0] GLOBAL_octave;
 
-    wire [2:0] OSCA_wave;
-    wire [1:0] OSCA_unison;
-    wire [6:0] OSCA_detune;
-    wire [7:0] OSCA_finetune;
-    wire [4:0] OSCA_semitone;
-    wire [2:0] OSCA_octave;
-    wire [6:0] OSCA_panning;
-    wire [6:0] OSCA_volume;
-    wire [1:0] OSCA_output;
+    // wire [2:0] OSCA_wave;
+    // wire [1:0] OSCA_unison;
+    // wire [6:0] OSCA_detune;
+    // wire [7:0] OSCA_finetune;
+    // wire [4:0] OSCA_semitone;
+    // wire [2:0] OSCA_octave;
+    // wire [6:0] OSCA_panning;
+    // wire [6:0] OSCA_volume;
+    // wire [1:0] OSCA_output;
 
-    wire [2:0] OSCB_wave;
-    wire [1:0] OSCB_unison;
-    wire [6:0] OSCB_detune;
-    wire [7:0] OSCB_finetune;
-    wire [4:0] OSCB_semitone;
-    wire [2:0] OSCB_octave;
-    wire [6:0] OSCB_panning;
-    wire [6:0] OSCB_volume;
-    wire [1:0] OSCB_output;
+    // wire [2:0] OSCB_wave;
+    // wire [1:0] OSCB_unison;
+    // wire [6:0] OSCB_detune;
+    // wire [7:0] OSCB_finetune;
+    // wire [4:0] OSCB_semitone;
+    // wire [2:0] OSCB_octave;
+    // wire [6:0] OSCB_panning;
+    // wire [6:0] OSCB_volume;
+    // wire [1:0] OSCB_output;
 
-    wire [11:0] ADSR1_attack;
-    wire [11:0] ASDR1_decay;
-    wire [6:0] ADSR1_sustain;
-    wire [11:0] ADSR1_release;
-    wire [3:0] ADSR1_target;
-    wire [3:0] ADSR1_parameter;
-    wire [6:0] ADSR1_amount;
+    // wire [11:0] ADSR1_attack;
+    // wire [11:0] ASDR1_decay;
+    // wire [6:0] ADSR1_sustain;
+    // wire [11:0] ADSR1_release;
+    // wire [3:0] ADSR1_target;
+    // wire [3:0] ADSR1_parameter;
+    // wire [6:0] ADSR1_amount;
     
-    synthesizer_state state(
-        // Inputs
-        .clock(CLOCK_50),
-        .SW(SW[17:0]),
-        .load(load),
-        .resetn(1'b1), // TODO: unhardcode
+    // synthesizer_state state(
+    //     // Inputs
+    //     .clock(CLOCK_50),
+    //     .SW(SW[17:0]),
+    //     .load(load),
+    //     .resetn(1'b1), // TODO: unhardcode
 
-        .key1_on(key1_on),
-        .key1_code(key1_code),
-        .key2_on(key2_on),
-        .key2_code(key2_code),
+    //     .key1_on(key1_on),
+    //     .key1_code(key1_code),
+    //     .key2_on(key2_on),
+    //     .key2_code(key2_code),
 
-        // Outputs
-        .GLOBAL_octave(GLOBAL_octave),
+    //     // Outputs
+    //     .GLOBAL_octave(GLOBAL_octave),
 
-        .OSCA_wave(OSCA_wave),
-        .OSCA_unison(OSCA_unison),
-        .OSCA_detune(OSCA_detune),
-        .OSCA_finetune(OSCA_finetune),
-        .OSCA_semitone(OSCA_semitone),
-        .OSCA_octave(OSCA_octave),
-        .OSCA_panning(OSCA_panning),
-        .OSCA_volume(OSCA_volume),
-        .OSCA_output(OSCA_output),
+    //     .OSCA_wave(OSCA_wave),
+    //     .OSCA_unison(OSCA_unison),
+    //     .OSCA_detune(OSCA_detune),
+    //     .OSCA_finetune(OSCA_finetune),
+    //     .OSCA_semitone(OSCA_semitone),
+    //     .OSCA_octave(OSCA_octave),
+    //     .OSCA_panning(OSCA_panning),
+    //     .OSCA_volume(OSCA_volume),
+    //     .OSCA_output(OSCA_output),
 
-        .OSCB_wave(OSCB_wave),
-        .OSCB_unison(OSCB_unison),
-        .OSCB_detune(OSCB_detune),
-        .OSCB_finetune(OSCB_finetune),
-        .OSCB_semitone(OSCB_semitone),
-        .OSCB_octave(OSCB_octave),
-        .OSCB_panning(OSCB_panning),
-        .OSCB_volume(OSCB_volume),
-        .OSCB_output(OSCB_output),
+    //     .OSCB_wave(OSCB_wave),
+    //     .OSCB_unison(OSCB_unison),
+    //     .OSCB_detune(OSCB_detune),
+    //     .OSCB_finetune(OSCB_finetune),
+    //     .OSCB_semitone(OSCB_semitone),
+    //     .OSCB_octave(OSCB_octave),
+    //     .OSCB_panning(OSCB_panning),
+    //     .OSCB_volume(OSCB_volume),
+    //     .OSCB_output(OSCB_output),
 
-        .ADSR1_attack(ADSR1_attack),
-        .ASDR1_decay(ASDR1_decay),
-        .ADSR1_sustain(ADSR1_sustain),
-        .ADSR1_release(ADSR1_release),
-        .ADSR1_target(ADSR1_target),
-        .ADSR1_parameter(ADSR1_parameter),
-        .ADSR1_amount(ADSR1_amount)
-    );
+    //     .ADSR1_attack(ADSR1_attack),
+    //     .ASDR1_decay(ASDR1_decay),
+    //     .ADSR1_sustain(ADSR1_sustain),
+    //     .ADSR1_release(ADSR1_release),
+    //     .ADSR1_target(ADSR1_target),
+    //     .ADSR1_parameter(ADSR1_parameter),
+    //     .ADSR1_amount(ADSR1_amount)
+    // );
 
     // -------------------
     // --- Synthesizer ---
     // -------------------
     // TODO: implement
-
 
     // ----------------
     // --- VGA View ---
@@ -324,70 +323,39 @@ module DE2Pac_synthesizer (
     // ========================
     // === TESTS AREA BELOW ===
     // ========================
-
+    wire [7:0] apml;
+    ADSR_envelope adsr(
+        .clk(AUD_DACLRCK),
+        .gate(key1_on_raw),
+        .a(4'b0010),
+        .d(4'b0101),
+        .s(4'b1111),
+        .r(4'b0111),
+        .active(),
+        .amplitude(ampl)
+    );
     // -----------------------
     // --- Temp Sound Test ---
     // -----------------------
     // TODO: remove this stuff
-    // reg [18:0] delay_cnt;
-    // wire [18:0] delay;
-    // reg snd;
+    reg [18:0] delay_cnt;
+    wire [18:0] delay;
+    reg snd;
 
-    // wire [27:0] count_init;
-    // reg [27:0] count;
-    // reg [15:0] ampl;
+    always @(posedge CLOCK_50)
+        if(delay_cnt == delay) begin
+            delay_cnt <= 0;
+            snd <= !snd;
+    	end else delay_cnt <= delay_cnt + 1;
 
-    // assign count_init = 28'b0000000001111010000100100000 - 1'b1;
-    // wire pulse = (count == 28'b0000000000000000000000000000) ? 1'b1 : 1'b0;
+    assign delay = {SW[3:0], 15'd3000};
 
-    // always @ (posedge CLOCK_50)
-    // begin
-    //     if (count == 0)
-    //         count <= count_init;
-    //     else
-    //         count <= count - 1'b1;
-    // end
+    wire [15:0] sound = snd ? {8'b00000000, ampl} : -{8'b00000000, ampl};
 
-    // always @ (posedge pulse)
-    // begin
-    //     if (~KEY[0]) ampl <= 0;
-    //     else if (~SW[0]) ampl <= ampl + 1'b1;
-    // end
-
-    // HexDecoder h0(
-    //     .in(ampl[3:0]),
-    //     .out(HEX0)
-    // );
-
-    // HexDecoder h1(
-    //     .in(ampl[7:4]),
-    //     .out(HEX1)
-    // );
-
-    // HexDecoder h2(
-    //     .in(ampl[11:8]),
-    //     .out(HEX2)
-    // );
-
-    // HexDecoder h3(
-    //     .in(ampl[15:12]),
-    //     .out(HEX3)
-    // );
-
-    // always @(posedge CLOCK_50)
-    //     if(delay_cnt == delay) begin
-    //         delay_cnt <= 0;
-    //         snd <= !snd;
-    // 	end else delay_cnt <= delay_cnt + 1;
-
-    // assign delay = {4'b1111, 15'd3000};
-
-    // wire [31:0] sound = snd ? ampl : -ampl;
-
-    // assign read_audio_in = audio_in_available & audio_out_allowed;
-    // assign left_channel_audio_out = sound;
-    // assign right_channel_audio_out = sound;
-    // assign write_audio_out = audio_in_available & audio_out_allowed;
+    assign read_audio_in = audio_in_available & audio_out_allowed;
+    assign left_channel_audio_out = sound;
+    assign right_channel_audio_out = sound;
+    assign write_audio_out = audio_in_available & audio_out_allowed;
 
     // --------------------------
     // --- Temp Keyboard Test ---
