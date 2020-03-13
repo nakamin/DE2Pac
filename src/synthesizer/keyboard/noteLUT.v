@@ -57,7 +57,7 @@ module noteLUT(
     assign GLOBAL_octave_sub = GLOBAL_octave + 7'd2;
 
     assign note = (
-    (enable == 1'b0) ? 7'b0111111 : (
+    (enable == 1'b0) ? 7'b1111111 : ( // Not: enabled, same as unknown note
     (key_code == 8'h15) ? (NOTE_C + 7'd12 * (7'd0 + GLOBAL_octave_sub)): (//   Q  = C (+0)
     (key_code == 8'h1E) ? (NOTE_Csh + 7'd12 * (7'd0 + GLOBAL_octave_sub)): (// 2  = C# (+0) 
     (key_code == 8'h1D) ? (NOTE_D + 7'd12 * (7'd0 + GLOBAL_octave_sub)): (//   W  = D  (+0) 
@@ -95,6 +95,6 @@ module noteLUT(
     (key_code == 8'h49) ? (NOTE_D + 7'd12 * (-7'd2 + GLOBAL_octave_sub)): (// >.  = D  (-2)
     (key_code == 8'h4C) ? (NOTE_Dsh + 7'd12 * (-7'd2 + GLOBAL_octave_sub)): (//:; = D# (-2)
     (key_code == 8'h4A) ? (NOTE_E + 7'd12 * (-7'd2 + GLOBAL_octave_sub)) // ?/    = E  (-2) 
-    : 7'b0111111 // One above max note value (ie no note)
+    : 7'b1111111 // Max value
     ))))))))))))))))))))))))))))))))))))));
 endmodule

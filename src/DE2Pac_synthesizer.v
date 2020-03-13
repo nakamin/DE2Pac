@@ -332,9 +332,9 @@ module DE2Pac_synthesizer (
     wire [6:0] note;
 
     assign LEDG[6:0] = note;
-    assign LEDR[0] = key1_on;
-    assign LEDR[17:10] = key1_code;
-    assign LEDR[3:1] = GLOBAL_octave;
+    // assign LEDR[0] = key1_on;
+    // assign LEDR[17:10] = key1_code;
+    // assign LEDR[3:1] = GLOBAL_octave;
 
     noteLUT nlut(
         .key_code(key1_code),
@@ -342,6 +342,51 @@ module DE2Pac_synthesizer (
         .GLOBAL_octave(GLOBAL_octave),
         .note(note)
     );
+
+// 18-0
+    wire [27:0] init_counter;
+    // assign LEDR[17:0] = init_counter[17:0];
+    frequencyLUT flut(
+        .note(note),
+        .init_counter(init_counter)
+    );
+
+    wire freqClk;
+    frequencyClockGenerator fClkGen(
+        .CLOCK_50(CLOCK_50),
+        .note(note),
+        .pulse(freqClk)
+    );
+
+    // assign LEDG[7] = freqClk;
+
+
+    reg snd;
+
+    // initial
+    // begin
+    //     snd = 1'b0;
+    // end
+
+    // always @ (posedge freqClk)
+    // begin
+    //     snd <= 1'b1 - snd;
+    // end
+
+    reg [3:0] count;
+    always @ (posedge freqClk)
+    begin
+        count <= count + 1'b1;
+    end
+
+    // assign LEDG[7] = snd;
+    assign LEDR[3:0] = count;
+
+    // wire [15:0] sound = snd ? 16'b1 : -16'b1;
+    // assign left_channel_audio_out = sound;
+    // assign right_channel_audio_out = sound;
+
+
 
     // -----------------------
     // --- Temp Sound Test ---
