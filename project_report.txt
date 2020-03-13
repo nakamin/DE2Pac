@@ -107,8 +107,9 @@ We worked on getting the VGA Module up and running but we're running into some r
 We discovered that characters can be drawn on the VGA using a bitmap.
 We can indicate which pixels of the n x m space assigned to a character should be colored by assigning a value of 1 to them. (This idea came from char_decoder.v from notepad--). 
 We talked to Mickey to see if he could help us out and he suggested that we try to find a VGA adapter that's more sophisticated than the one we're using in class, but we haven't been able to find any. 
-If we can't make any meaningful progress in the next few days we may have to scale down to using some of the built-in DE2 LCD or Hex displays.
-We're going to the makerspace tomorrow (Friday March 13) to see if we can make some more progress.
+We also looked at a number of past projects and as far as we can tell all of them use a variation of the VGA control module from the lab (and as a result have a 280p or less resolution). However, due to the amount of information we would like to display we aim to get the resolution up to 480p.
+If we can't make any meaningful progress in the next few days we may have use a 240p resolution or scale down to using some of the built-in DE2 LCD or Hex displays.
+We plan on going to Makerspace to see if we can make any more progress on our own time.
 
 
 References
