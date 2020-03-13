@@ -95,11 +95,20 @@ Weekly Reports
 <In this space, provide a report each week of what worked and what didn't, and what (if any) changes were made to your proposal)>
 
 
-[This is an example of a report where things didn't go so well.]
 Week 1: 
-We have designs for what the VGA should display, and what inputs it will be given and what outputs it will send to the display. We worked on getting the VGA Module up and running but we're running into many roadblocks. We discovered that characters can be drawn on the vga using a bitmap
-We can indicate which pixels of the n x m space assigned to a character should be colored by assigning a value of 1 to them. (This idea came from char_decoder.v
-from notepad--). We talked to Mickey to see if he could help us out and he suggested that we try to find a vga adapter that's more sophisticated than the one we're using in class, but we can't find any. We might have to scale down to using some of the built-in DE2 LCD or Hex displays. We're going to the makerspace tomorrow to see if we can make some more progress.
+For squad A, we were able to make quite a bit of progress:
+- We were able to play sound to the line-out using the audio codec. 
+- We got the PS2 keyboard working with support for 2 simultaneous key presses and implemented.
+- We also implemented the synthesizer state manager module that handles loading/storing the state of the synthesizer from the switches and keys based off which module (OSCA, OSCB, ASDR) is selected currently when a key is pressed.
+- We were also able to get the base ADSR envelope working and test it by hooking it up to the volume of a hardcoded sound which was triggered by a PS2 key press.
+
+For squad B, we have designs for what the VGA should display, and what inputs it will be given and what outputs it will send to the display. 
+We worked on getting the VGA Module up and running but we're running into some roadblocks. 
+We discovered that characters can be drawn on the VGA using a bitmap.
+We can indicate which pixels of the n x m space assigned to a character should be colored by assigning a value of 1 to them. (This idea came from char_decoder.v from notepad--). 
+We talked to Mickey to see if he could help us out and he suggested that we try to find a VGA adapter that's more sophisticated than the one we're using in class, but we haven't been able to find any. 
+If we can't make any meaningful progress in the next few days we may have to scale down to using some of the built-in DE2 LCD or Hex displays.
+We're going to the makerspace tomorrow (Friday March 13) to see if we can make some more progress.
 
 
 References
