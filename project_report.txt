@@ -127,6 +127,9 @@ Audio Controller: http://www.eecg.utoronto.ca/~jayar/ece241_08F/AudioVideoCores/
 Audio and Video-in Configuration Module: http://www.eecg.utoronto.ca/~jayar/ece241_08F/AudioVideoCores/avconf/avconf.html
 - src/avconf/*
 
+PNG to MIF converter:
+- https://github.com/Nananas/ImageToMif
+
 From Class:
 - src/hex/HexDecoder.v
 
