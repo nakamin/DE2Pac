@@ -80,7 +80,7 @@ module synthesizer_state(input clock,
         OSCA_semitone = 5'b01101;
         OSCA_octave   = 3'b100;
         OSCA_panning  = 7'b0110011;
-        OSCA_volume   = 7'b1100101;
+        OSCA_volume   = 7'b1100101; //TODO adjust these
         OSCA_output   = 2'b01;
         
         OSCB_wave     = 3'b000;

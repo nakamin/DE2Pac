@@ -12,7 +12,7 @@ Below is an outline of all the parameters for the modules
     
     (might add more in the future)
 * **unison:** 2 bit (1-4), default 1
-* **detune:** 7 bit (0%-100%), default 50% (‭0110010)
+* **detune:** 7 bit (0%-100%), default 50% (0110010)
     * only use the first 101 numbers, where 0%=0000000
 * **finetune**: 8 bit (-100 cent, ..., 0 cent, ..., +100 cent), default 0 cent (01100101)
     * only use the first 201 numbers, where -100 cent = 00000000
@@ -22,8 +22,7 @@ Below is an outline of all the parameters for the modules
     * only use first 7 numbers, where -3=000
 * **panning:** 7 bit (-50L, ..., -1L, 0C, +1R, ..., +50R): default: OC (0110011)
     * only use first 101 numbers, where -50L=0000000, 0C=0110010, +50L=1100101
-* **volume:** 7 bit (0%-100%), default 100% (1100101‬)
-    * only use first 101 numbers, where 0%=0000000
+* **volume:** 7 bit (0-96 dB), default 30dB (0011110)
 * **output:** 2 bit, default master (01)
     * 00: none,
     * 01: master
