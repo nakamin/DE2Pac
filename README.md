@@ -18,10 +18,13 @@ $: cd quartus
 $: make program
 ```
 
-# VSCod workflow
+# VSCode workflow
 
 Press `Ctrl-shift-b` to see the build tasks
 First run Synthesis and make sure there are no errors
 Then run Compile
 Then program
 If anything weird happens run Clean
+
+# Demo video
+https://youtu.be/RyISh3d2zlY
