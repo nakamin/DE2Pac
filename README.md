@@ -1,7 +1,6 @@
 # DE2Pac
 
 A synthesizer built on the Altera DE2 board for CSCB58
-Abandoned for now due to COVID 😭😢
 
 # Compile and flash
 
